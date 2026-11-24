@@ -1,0 +1,15 @@
+benchmark: drbench
+task_id: DR0002
+harness: deepseek
+provider: vllm
+base_url: http://127.0.0.1:8505/v1
+model: qwen3.5-9b
+planner_mode: generated
+planner_chat_template_kwargs: {enable_thinking: false}
+protocol: point_to_point
+seed: 7
+max_turns: 40
+max_team_tokens: 250000
+judge_provider: vllm
+judge_base_url: http://127.0.0.1:8505/v1
+judge_model: qwen3.5-9b

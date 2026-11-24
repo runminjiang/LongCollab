@@ -1,0 +1,27 @@
+External research brief for DR0003 — prepared for REPORT_LEAD01
+Research focus: public evidence on data-driven grocery loyalty, customer engagement and competitor practice. Evidence scope is limited to material available by the requested report date (2025-08-27).
+
+Citation-ready findings
+
+1. Engagement and loyalty are under pressure. BCG's 2024 article reports that US consumer engagement was down 10% from its initial 2022 study and loyalty was 20% lower than two years earlier. The available excerpt does not define these measures, clarify whether the declines are relative or percentage-point changes, or report sample size and field dates. Treat this as evidence of a challenge, not a benchmark for Lee's Market.
+Citation: Boston Consulting Group, “Loyalty Programs Are Growing—So Are Customer Expectations” (Dec. 9, 2024), https://www.bcg.com/publications/2024/loyalty-programs-customer-expectations-growing
+
+2. Grocery shoppers expect personalization and digital engagement, but available public excerpts do not establish the business impact. Lobyco's 2024 Grocery Pulse article describes a survey of US grocery shoppers' loyalty-program experiences, technology, and engagement methods; its accessible text provides no sample size or quantified findings. Its title highlights personalization and gamification but should not be treated as proof of measured preference or sales lift.
+Citation: Lobyco, “U.S. Grocery Shoppers Crave Personalization and Gamification” (Sep. 17, 2024), https://www.lobyco.com/news-room/lobyco-survey-u-s-grocery-shoppers-crave-personalization-and-gamification
+
+3. Competitor practice: Kroger was reported in 2023 as testing personalized coupons aimed at shoppers who shop in-store only, illustrating a way to use customer purchase data to extend targeted offers beyond digital-first customers. No outcome or test result was available in the retrieved excerpt. A 2023 SmartBrief piece also describes Kroger connecting with frequent online grocery shoppers through digital channels using personalization data, with no quantified impact reported.
+Citation: PYMNTS, “Kroger Tests Personalized Coupons to Win Loyalty of In-Store-Only Shoppers” (Jan. 27, 2023), https://www.pymnts.com/news/loyalty-and-rewards-news/2023/kroger-tests-personalized-coupons-win-loyalty-in-store-only-shoppers/
+Citation: SmartBrief, “The Evolution of Grocery Brand Loyalty” (Aug. 24, 2023), https://www.smartbrief.com/original/the-evolution-of-grocery-brand-loyalty
+
+Implications for Lee's Market
+
+- Pilot relevance-based offers using first-party purchase patterns, with useful categories that reflect Lee's fresh, prepared-food, bakery, Asian household and grocery mix. Test cultural and neighborhood relevance at store/market level rather than assuming one offer fits all.
+- Link in-store and digital behavior where customer identification and consent allow; include in-store-only shoppers in offer delivery, following the Kroger example. Consider practical engagement mechanics such as replenishment reminders, personalized recipes or meal bundles, and simple missions/rewards as hypotheses to test, not proven outcomes.
+- Measure engagement and incremental value separately: active identified members, offer views/activations, redemption, repeat visit/purchase frequency, category breadth, basket margin and digital/in-store cross-channel use. Use holdout/control groups or phased rollout to estimate incrementality and avoid counting purchases that would have happened anyway.
+- Make value clear and participation low-friction. BCG's reported decline makes a generic points program an insufficient assumption; test whether tailored value and convenient digital/in-store use actually improve response.
+
+Evidence cautions
+
+- No retrieved pre-2025 source provides a reliable quantified causal lift in grocery sales, retention or ROI from personalized offers, gamification or loyalty design.
+- BCG's decline measures have missing definitions/method detail. Lobyco's survey article excerpt lacks its sample and detailed results. PYMNTS and SmartBrief are competitor-practice examples, not outcome evaluations.
+- Do not cite Eagle Eye's “nearly 60%” personalized-offer statistic: the page returned by search is dated July 2026, after the requested report date.

@@ -1,0 +1,29 @@
+{
+  "members": [
+    {
+      "id": "LOYALTY_EXT01",
+      "role": "Loyalty and retail research analyst",
+      "assignment": "Use external research to gather evidence on data-driven grocery loyalty programs, customer engagement tactics, personalization, measurement, and relevant competitor practices. Provide a concise evidence brief with source URLs, citation-ready claims, and implications for Lee's Market.",
+      "resource_ids": [
+        "drbench_app"
+      ]
+    },
+    {
+      "id": "CRM_INT01",
+      "role": "CRM and customer-data analyst",
+      "assignment": "Use internal enterprise sources to identify available loyalty, CRM, transaction, digital, and campaign data; current engagement baselines; customer segments; and data-use constraints. Provide actionable measures, data requirements, and cited internal evidence for recommendations tailored to Lee's Market.",
+      "resource_ids": [
+        "drbench_app"
+      ]
+    },
+    {
+      "id": "REPORT_LEAD01",
+      "role": "Marketing strategy synthesizer and report owner",
+      "assignment": "Combine the external research and internal evidence into a practical plan for Marketing Manager David Lee. Develop prioritized recommendations, test-and-learn steps, success metrics, and risks. Assemble the named final output report.json containing report_text and report_insights with claims and citations; validate citation support and submit/upload report.json as the final deliverable.",
+      "resource_ids": [
+        "drbench_app"
+      ]
+    }
+  ],
+  "first_member": "LOYALTY_EXT01"
+}

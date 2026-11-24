@@ -1,0 +1,29 @@
+{
+  "members": [
+    {
+      "id": "agent1",
+      "role": "agent1",
+      "assignment": "Lead the literature review and synthesis on relational-database machine learning, comparing graph-based, tabular, and existing multi-table benchmark approaches. Propose the central research question and integrate agents' contributions into the final 5q research idea. Assemble the final output titled \"idea,\" upload it, and submit it after verifying that it follows the required five-question format and clearly states the dataset, method, metrics, challenges, and expected results.",
+      "resource_ids": [
+        "research"
+      ]
+    },
+    {
+      "id": "agent2",
+      "role": "agent2",
+      "assignment": "Analyze the technical research gap involving heterophilous relational graphs, heterogeneous features, inductive versus transductive prediction, and distribution shifts. Use the research resource to identify relevant prior work and provide concrete methodological components, baselines, ablations, and robustness metrics for a proposed relational benchmark or model. Deliver a concise evidence-backed contribution to agent1 for inclusion in the final 5q idea.",
+      "resource_ids": [
+        "research"
+      ]
+    },
+    {
+      "id": "agent3",
+      "role": "agent3",
+      "assignment": "Develop the experimental design for the proposed research idea, including a hybrid GNN-GBDT or uncertainty-aware relational model, dataset construction from raw multi-table data, temporal and structural distribution-shift splits, calibration and predictive-performance metrics, and expected outcomes. Identify why prior methods are insufficient and provide a clear evaluation protocol to agent1 for incorporation into the final 5q idea.",
+      "resource_ids": [
+        "research"
+      ]
+    }
+  ],
+  "first_member": "agent1"
+}

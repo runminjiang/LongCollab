@@ -1,0 +1,19 @@
+{
+  "scenario": "research",
+  "num_tasks": 3,
+  "num_completed": 3,
+  "num_failed": 0,
+  "planning_score": 3.7667,
+  "communication_score": 4.6667,
+  "coordination_score": 4.2167,
+  "avg_milestones": 23.3333,
+  "avg_token_usage": 261214.0,
+  "avg_iterations": 4.0,
+  "task_scores": {
+    "innovation": 4.3333,
+    "safety": 4.3333,
+    "feasibility": 3.3333
+  },
+  "task_score": 4.0,
+  "model": "openai/gpt-5.6-luna"
+}

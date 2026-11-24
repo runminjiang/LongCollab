@@ -1,0 +1,10 @@
+experiments/upstream/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+experiments/runs/
+experiments/.cache/
+experiments/benchmark-deps/
+experiments/offline-data/
+experiments/*.local.yaml
+experiments/codex-eval/

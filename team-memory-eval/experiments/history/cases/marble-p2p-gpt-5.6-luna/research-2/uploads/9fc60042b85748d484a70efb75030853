@@ -1,0 +1,25 @@
+# Agent 3 contribution: faithful causal explanations for HARMONIC
+
+## Brainstorming / central gap
+
+HARMONIC’s strategic layer can use language models for interpretation and planning, but a fluent post-hoc rationale can be disconnected from the state variables that actually caused an action. Existing explainable-planning work (including model-reconciliation and contrastive plan explanations) generally assumes a symbolic, stationary model and a single decision-maker. Policy-transparency work in robotics improves human understanding, but often evaluates perceived plausibility or trust rather than whether explanations track the policy’s true causal dependencies. Language-conditioned robot learning and VLA systems improve task execution, yet their explanations are usually generated after the fact and are not tested under interventions, teammate-model errors, sensor corruption, or novel environments.
+
+The opportunity is a causal explanation interface shared by HARMONIC’s strategic and tactical layers. Represent each episode as a typed interaction graph: observations and uncertainty -> world state/beliefs -> goals and teammate beliefs -> candidate plans -> selected action -> outcome/intervention -> explanation. Each edge carries provenance and confidence. The strategic layer must produce (a) a concise factual account, (b) a contrastive answer to “why action A rather than B?”, and (c) a counterfactual prediction of what would change if a relevant fact, goal, capability, or teammate belief changed. Explanations should be generated from the graph and verified against controlled rollouts, rather than generated freely by an LLM.
+
+## Question 3: why hard
+
+Faithfulness is difficult because the robot acts from partially observed multimodal state, approximate dynamics, changing teammate beliefs, and hierarchical plans. Perception uncertainty can be confused with causal uncertainty; an action may be selected by several interacting constraints; and a tactical controller can alter or reject the strategic plan. Counterfactuals must remain physically and socially feasible, preserve unaffected variables, and account for intervention timing. Novel disturbances and adversarial language/visual inputs can cause the explanation generator to describe a plausible but unused cue. A naive post-hoc LLM rationale can be fluent while insensitive to the actual decision, while a raw trace is faithful but unintelligible. Naive causal attribution also fails when correlated observations, hidden state, nonstationary teammates, or distribution shift invalidate the assumed graph. The system therefore needs uncertainty-aware causal attribution, hierarchical credit assignment, calibrated confidence, and online consistency checks between explanation claims and replayed/intervened trajectories.
+
+## Question 4: why not solved before
+
+Prior model-reconciliation and explainable-planning methods typically require a known symbolic model and focus on explaining a plan mismatch, not a learned multimodal policy operating with a human teammate. Policy explanation studies often measure human-rated usefulness or trust, which can reward persuasive explanations even when they are causally false. VLM/VLA systems generally optimize task success and language alignment, without recording the beliefs, alternatives, rejected actions, or causal provenance needed for verification. Work on causal attribution often treats static prediction rather than embodied sequential action, and benchmarks rarely combine teammate modeling, language, physical intervention, sensor failures, and domain shift. HARMONIC provides a natural architectural separation: the strategic layer can expose beliefs, goals, alternatives, and rationale; the tactical layer can supply execution traces and failure evidence; and the bidirectional interface can test whether explanations predict actual behavior. The proposed contribution is to make explanations falsifiable: every important claim is linked to graph variables and checked by interventions, counterfactual rollouts, and action-swapping tests.
+
+## Suggested hypotheses and analyses
+
+H1: graph-grounded explanations have higher causal fidelity (claim changes under the relevant intervention and remains stable under irrelevant changes) than LLM-only rationales, at similar human comprehensibility.
+
+H2: explicit teammate-belief nodes improve collaborative efficiency and calibration, especially when the teammate’s goal or capability differs from the robot’s initial estimate.
+
+H3: uncertainty-aware provenance and abstention reduce unsafe actions and false-confidence explanations under sensor corruption, adversarial language, and unseen environments.
+
+Evaluate factual and contrastive claims with action sensitivity, counterfactual agreement, sufficiency/necessity tests, explanation calibration (confidence versus correctness), and human ability to predict or correct the robot. Include explanation faithfulness separately from fluency/trust so persuasive but false rationales are exposed.

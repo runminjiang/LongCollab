@@ -1,0 +1,132 @@
+[
+  {
+    "harness": "codex",
+    "provider": "openai",
+    "configured": "high",
+    "image_id": "sha256:f3b79e6fc7f610d0e45b07b8178dde5d9c3a4adb9cee1a7d59507c78e8eaab39",
+    "requests": [
+      {
+        "reasoning": {
+          "effort": "high",
+          "summary": "auto"
+        }
+      },
+      {
+        "reasoning": {
+          "effort": "high",
+          "summary": "auto"
+        }
+      }
+    ]
+  },
+  {
+    "harness": "claude-code",
+    "provider": "openai",
+    "configured": "high",
+    "image_id": "sha256:b3e812610d0f787318d52f962e922bda3dc36f7b8f564c6144cc429037642198",
+    "requests": [
+      {
+        "reasoning_effort": "high"
+      },
+      {
+        "reasoning_effort": "high"
+      }
+    ]
+  },
+  {
+    "harness": "deepseek",
+    "provider": "openai",
+    "configured": "high",
+    "image_id": "sha256:95048d1f481843edf9a8e133d1c2f93cbf63acdf7859bae09abb889c379960ee",
+    "requests": [
+      {
+        "reasoning_effort": "high"
+      },
+      {
+        "reasoning_effort": "high"
+      }
+    ]
+  },
+  {
+    "harness": "claude-code",
+    "provider": "anthropic",
+    "configured": "high",
+    "image_id": "sha256:b3e812610d0f787318d52f962e922bda3dc36f7b8f564c6144cc429037642198",
+    "requests": [
+      {
+        "thinking": {
+          "type": "adaptive",
+          "display": "updates"
+        },
+        "output_config": {
+          "effort": "high"
+        }
+      },
+      {
+        "thinking": {
+          "type": "adaptive",
+          "display": "updates"
+        },
+        "output_config": {
+          "effort": "high"
+        }
+      }
+    ]
+  },
+  {
+    "harness": "deepseek",
+    "provider": "deepseek",
+    "configured": "high",
+    "image_id": "sha256:95048d1f481843edf9a8e133d1c2f93cbf63acdf7859bae09abb889c379960ee",
+    "requests": [
+      {
+        "thinking": {
+          "type": "enabled"
+        },
+        "output_config": {
+          "effort": "high"
+        }
+      },
+      {
+        "thinking": {
+          "type": "enabled"
+        },
+        "output_config": {
+          "effort": "high"
+        }
+      }
+    ]
+  },
+  {
+    "harness": "deepseek",
+    "provider": "deepseek",
+    "configured": "off",
+    "image_id": "sha256:95048d1f481843edf9a8e133d1c2f93cbf63acdf7859bae09abb889c379960ee",
+    "requests": [
+      {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    ]
+  },
+  {
+    "harness": "deepseek",
+    "provider": "openai",
+    "configured": "off",
+    "image_id": "sha256:95048d1f481843edf9a8e133d1c2f93cbf63acdf7859bae09abb889c379960ee",
+    "requests": [
+      {
+        "reasoning_effort": "none"
+      },
+      {
+        "reasoning_effort": "none"
+      }
+    ]
+  }
+]

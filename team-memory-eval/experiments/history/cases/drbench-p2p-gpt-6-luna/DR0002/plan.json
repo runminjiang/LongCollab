@@ -1,0 +1,29 @@
+{
+  "members": [
+    {
+      "id": "TEAM01",
+      "role": "Retail personalization research lead and report owner",
+      "assignment": "Lead the work for Sales Team Lead Michael Lee. Use external research and the other members’ evidence to synthesize how personalization can drive retail sales and recommend practical actions for Lee’s Market. Assemble the final report.json with report_text and report_insights, ensuring claims have citations in the requested formats. Upload and submit report.json.",
+      "resource_ids": [
+        "drbench_app"
+      ]
+    },
+    {
+      "id": "TEAM02",
+      "role": "Retail market and competitor researcher",
+      "assignment": "Gather external evidence on retail personalization, grocery and multicultural retail trends, customer expectations, relevant technologies, and competitor practices. Provide the lead with concrete findings, source URLs, citation-ready details, and implications for Lee’s Market’s in-store, online, and delivery channels.",
+      "resource_ids": [
+        "drbench_app"
+      ]
+    },
+    {
+      "id": "TEAM03",
+      "role": "Customer, sales, and internal evidence analyst",
+      "assignment": "Search internal enterprise sources for Lee’s Market evidence relevant to personalization, such as customer behavior, sales performance, loyalty or CRM data, service feedback, and operational constraints. Provide evidence-backed opportunities, risks, and measures of success to the lead; distinguish unavailable evidence from findings and do not invent internal results.",
+      "resource_ids": [
+        "drbench_app"
+      ]
+    }
+  ],
+  "first_member": "TEAM01"
+}

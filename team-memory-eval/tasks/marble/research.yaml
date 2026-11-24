@@ -1,0 +1,3 @@
+revision: eae9f15e5b9f1e808f8ff61800b129d5538c1b47
+role_source: upstream
+outputs: {idea: text}

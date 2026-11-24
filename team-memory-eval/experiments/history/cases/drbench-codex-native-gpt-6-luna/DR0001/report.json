@@ -1,0 +1,54 @@
+{
+  "report_text": "# Lee's Market: using FSMA 204 to improve safety and trust\n\n**To:** Emily Patel, Regulatory Affairs Manager  \n**Decision:** Turn FSMA 204 readiness into a cross-functional, lot-level traceability and recall program for U.S. operations, then align the data model with Canada's separate traceability rules.\n\nFSMA 204 adds recordkeeping for foods on FDA's Food Traceability List (FTL) at specified Critical Tracking Events (CTEs). The FTL includes particular forms of fresh produce, fresh-cut produce, seafood, shell eggs, nut butters, certain cheeses, and refrigerated ready-to-eat deli salads. Product form and exceptions matter, so map Lee's products and ingredients against the FDA list rather than treating every grocery item as covered. The rule's seven CTEs are harvesting, cooling before initial packing, initial packing, first land-based receiving of seafood, shipping, receiving, and transformation. Covered businesses record the applicable Key Data Elements (KDEs), including traceability lot code (TLC) and the location where it was assigned. Transfers between Lee locations at different street addresses can count; an ordinary consumer sale is not a shipping CTE. Confirm exemptions by facility, food, and activity.\n\n**What Lee should do**\n\n1. **Build the coverage and supplier baseline.** Regulatory Affairs and Food Safety should identify FTL products by SKU and ingredient, U.S. facility, event performed, supplier, and any claimed exemption. Procurement should maintain a supplier-by-supplier readiness register: applicable foods, required data, missing lot/source information, remediation owner, and due date. Lee's July 2025 update reported 85% compliance among high-risk suppliers, so establish the denominator and close the remaining supplier gaps before relying on that summary rate.\n\n2. **Make lot-level records work at receiving and in stores.** Configure receiving to capture the applicable KDEs and supplier TLC/source, link the lot to purchase orders and inventory, and preserve that link through store transfers. Review preparation and handling of covered foods—such as cutting or combining listed ingredients—to determine where transformation records and input-to-output lot links are required. Retain supplier codes unless a covered transformation requires a new code. Make records quickly retrievable in the format FDA requires. Lee's existing high-risk inventory tracking is a useful base, but internal records do not establish FTL mapping, lot-level receiving coverage, or tested retrieval.\n\n3. **Prove the process with timed mock recalls.** Pilot across representative U.S. stores and high-risk categories, including produce and seafood. For a selected lot, trace back to its source and forward to affected Lee locations, reconcile remaining inventory, and test product hold/removal. Where order records reliably identify purchasers, test targeted online-order or loyalty notifications. Record completeness, trace time, store reconciliation, and corrective actions; run the exercise again after fixes. Internal Lee records describe a prior simulated recall with communication and supply-chain response issues, but no evidence of a timed follow-up test.\n\n4. **Train by role and make customer communication evidence-led.** Give receiving, procurement, inventory, store, prepared-food, online fulfillment, and customer-service teams short role-based procedures and exercises. Existing training figures—12 average hours and 90% completion in Q1 2024—were not FSMA 204-specific. During an incident, use validated lot data to place holds and issue clear notices with product identity, lot/date details when available, what customers should do, and where to get help. A recall communication page and order-based alerts can make response more useful; FSMA 204 itself does not require consumer-level tracking or prove that every item is covered. Avoid broad claims such as “all products are traceable.”\n\n**Timing and cross-border scope.** The request is dated August 27, 2025. At that point FDA had announced a proposed 30-month extension to July 20, 2028, while the rule's existing compliance date was January 20, 2026. Treat the extension as proposed in this report and verify its legal status before resetting milestones; keep implementation moving. For Canadian facilities, map requirements separately under the Safe Food for Canadians Regulations, which require applicable businesses to trace food one step back and one step forward. Use a common lot and supplier data model where practical, with jurisdiction-specific controls.\n\n**Management measures:** FTL SKU coverage by facility; supplier lot/source data completeness; percentage of in-scope receipts with required KDEs; successful lot-to-store reconciliation; time to retrieve records (the FDA rule calls for records within 24 hours or another reasonable time FDA agrees to); and completion of corrective actions after mock recalls. These are Lee management targets, not additional statutory thresholds. Better traceability can narrow investigations and support faster, more specific recalls; Lee should present it to customers as a concrete response capability, not as a guarantee of food safety or a claim that trust has already increased.\n\n**Primary sources:** FDA, [FSMA Food Traceability Rule](https://www.fda.gov/food/food-safety-modernization-act-fsma/fsma-final-rule-requirements-additional-traceability-records-certain-foods), [Food Traceability List](https://www.fda.gov/food/food-safety-modernization-act-fsma/food-traceability-list), [Rule FAQs](https://www.fda.gov/food/food-safety-modernization-act-fsma/frequently-asked-questions-fsma-food-traceability-rule), and [Aug. 6, 2025 proposed compliance-date extension](https://www.fda.gov/food/hfp-constituent-updates/fda-proposes-extend-compliance-date-food-traceability-rule-and-issues-new-faqs-and-other-resources); CFIA, [Regulatory requirements: Traceability for food](https://inspection.canada.ca/en/food-safety-industry/traceability/traceability).",
+  "report_insights": [
+    {
+      "claim": "FSMA 204 is product- and event-specific: Lee should map listed foods and applicable CTEs by SKU, facility, and activity; ordinary consumer sales are not a shipping CTE.",
+      "citations": [
+        "https://www.fda.gov/food/food-safety-modernization-act-fsma/food-traceability-list",
+        "https://www.fda.gov/food/food-safety-modernization-act-fsma/fsma-final-rule-requirements-additional-traceability-records-certain-foods",
+        "https://www.fda.gov/food/food-safety-modernization-act-fsma/frequently-asked-questions-fsma-food-traceability-rule"
+      ]
+    },
+    {
+      "claim": "As of the brief's date, August 27, 2025, FDA had proposed extending the January 20, 2026 compliance date by 30 months to July 20, 2028; Lee should verify final status and avoid delaying readiness on the basis of a proposal.",
+      "citations": [
+        "https://www.fda.gov/food/hfp-constituent-updates/fda-proposes-extend-compliance-date-food-traceability-rule-and-issues-new-faqs-and-other-resources",
+        "https://www.fda.gov/food/food-safety-modernization-act-fsma/fsma-final-rule-requirements-additional-traceability-records-certain-foods"
+      ]
+    },
+    {
+      "claim": "Lee's July 2025 internal update reported 85% compliance among high-risk suppliers; supplier-level scope, gaps, owners, and remediation dates should be documented before treating the rate as a readiness measure.",
+      "citations": [
+        "Email from david.lee@leesmarket.com on 15 Jul 2025 (subject: Re: FSMA 204 Compliance Update - Q2 2025)"
+      ]
+    },
+    {
+      "claim": "Lee's Q3 2024 records describe inventory tracking for about 250 high-risk products, nearly 30% of inventory, but do not establish FTL mapping, lot-level KDE capture, or tested retrieval; use the system as a starting point and validate those controls.",
+      "citations": [
+        "food-safety-compliance.pdf",
+        "food-safety-regulatory-compliance.pdf",
+        "https://www.fda.gov/food/food-safety-modernization-act-fsma/frequently-asked-questions-fsma-food-traceability-rule"
+      ]
+    },
+    {
+      "claim": "Lee's Q1 2024 training metrics were 12 average hours and 90% completion, but the cited email says the program was not FSMA 204-specific; role-based traceability and mock-recall training should be tracked separately.",
+      "citations": [
+        "Email from amy.chen@leesmarket.com on 05 Apr 2024 (subject: Q1 2024 Training Update)"
+      ]
+    },
+    {
+      "claim": "For Canadian operations, FSMA 204 should be mapped separately from SFCR traceability requirements, which require applicable food businesses to identify immediate suppliers and customers.",
+      "citations": [
+        "https://inspection.canada.ca/en/food-safety-industry/traceability/traceability"
+      ]
+    },
+    {
+      "claim": "Lot-level traceability can support narrower investigations and clearer recall notices, while customer alerts and purchaser-level lookup are operational choices beyond the rule's recordkeeping requirement.",
+      "citations": [
+        "https://www.fda.gov/food/food-safety-modernization-act-fsma/frequently-asked-questions-fsma-food-traceability-rule",
+        "https://www.fda.gov/food/recalls-outbreaks-emergencies/fda-encourages-food-industry-leaders-streamline-enhance-product-recall-communications-public-and",
+        "food-safety-regulatory-compliance.pdf"
+      ]
+    }
+  ]
+}

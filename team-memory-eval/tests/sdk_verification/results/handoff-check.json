@@ -1,0 +1,347 @@
+{
+  "date": "2026-11-24",
+  "git_base": "f11801df07f08eafe1848d75f0fc359d8e4aafdb",
+  "workspace_runtime_manifest_sha256": "88313750a5a93bc45cdc9ed0d4579640cf5a76491e27071c46838785fcf9a373",
+  "runtime_files_sha256": {
+    "eval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "eval/score.py": "2e8c943a32e5d66a47644987a0fdc74003073c97bee37512383733c72e484dc8",
+    "experiments/codex_research_worker.py": "c93888a098c02a072df3fa4e430a657c94a09df2d046a94c61a4fec01ac87c75",
+    "experiments/drbench-api.example.yaml": "a54d149cef5bc74f1baaaaa1abc093d4c5d95740461668d94970223aba9f4a03",
+    "experiments/drbench.yaml": "f623c56742506e27b72e87f6e13846e0a8013ad104f8f31efc0a35a4a398c645",
+    "experiments/marble-api.example.yaml": "a3eacbdf2e12d7ae1d2e5551c22ee437e3fd654fca4b93dd5e3f30dd7f79c87d",
+    "experiments/marble-p2p-luna.yaml": "66cfca2c2542b6bf432f025bca271332f554273c57bc6550b95b7b13e3d67d8e",
+    "experiments/marble.yaml": "850b866130309afb436eca45520253c8623cddceeeccd31e3e38f347d8ceaa23",
+    "experiments/replay_baseline_scores.py": "02b3b79fa56e3e46e29f0d052c32c5dcd3f74415f4e8611c8c56c6fbeca7a205",
+    "experiments/run_codex_research.py": "b22bd6ea5af1060f93321f22c3aac2af09622da55791b45452d4b32ccfaca456",
+    "images/claude-code.Dockerfile": "c47109021912b09b5957a64990720d9ad21c0de85944f0bd1eb61139a2430d8b",
+    "images/codex.Dockerfile": "04d95d272d39352d2032f0fab752f09380bde85c55d4e7dffdd044a1a56d142c",
+    "images/deepseek.Dockerfile": "ef93625040b23b7854c88fdbb820646e013786ba67d0137302103f565d4c283a",
+    "pyproject.toml": "14f709638a54d2810c674f4abf024c90e1f9c83891955b61a9c4d3617dcc5232",
+    "run.py": "c6ac6a9512ba389be287554a2835abbd389bae63ad96178468f0fb8d8d4f99aa",
+    "runtime/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/envs/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/envs/point_to_point.py": "334d712ca7d3ea99642f8cf67864c48f9cb1fa72ad6d007398740d899b410e62",
+    "runtime/envs/team.py": "00c68eaba2cb6c4df033b9f08c152d9d33ec8fed73b45c058225038f025d63b3",
+    "runtime/harnesses/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/harnesses/__main__.py": "49e00fee2ca2af4b5ce28f3a9908242b6411dc2957b963e63bd07eb69cedf905",
+    "runtime/harnesses/claude_code.py": "6729094e38c141c6907ffba90e772a5c7ee6c96b76c87c18147162701186c8a2",
+    "runtime/harnesses/codex.py": "45913b2bc24b3f5d2f9b86ddf05ee85d5b1d6312c6a16ccb74d910058a45a3d2",
+    "runtime/harnesses/deepseek.py": "693b01920a4fab56bc26ebd51595aa0cca2cb83265796b688151563152df7c05",
+    "runtime/planner.py": "33eceda3535824712d07ce1370f41a890274c4d3425f25c884c4367e377813d5",
+    "runtime/sandbox.py": "4aff181f588217796e44e3e48c6d00c772bf49576ccd1edc67021f4930e9ea5d",
+    "scenarios/__init__.py": "86d554d5c10d8b6784acc27be361c88a33f65c0fe19783f38809b1f3c1d38189",
+    "scenarios/drbench.py": "794b1193afc26b63712c5db9586ffe0878bf8695f8d3949d53469f9d51ea09cd",
+    "scenarios/marble.py": "e90c28f0e8922531f8e331ba139d86f7c81d5873625651d61709e950a2a81411",
+    "scenarios/marble_web.py": "67098b20f78d61970fec8612c6da09175b34311b18f0a0cb4befee129c5d59e7",
+    "service/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "service/api.py": "6413e74425fc73ff9e34ae010a176a12d21e5e4a36b52f9b7157c5785d416080",
+    "service/archive.py": "e05a9432a73c2b32c470ec0a13c518a29e4ec2fc628adbbd75a6c04ec36fd469",
+    "service/budget.py": "90ada225f1074ce32e7faee838e07220e3112df0677eb0973ad9ae73004b72a9",
+    "service/events.py": "c67da90165cbd08cd0fc31f976cf4933745d8f565fc3e703d578293ba445296b",
+    "service/gateway.py": "f277aa75ecdc9bf899c1607795fb5f90d371636fb0cd7e0e21b81d4d9a3dff42",
+    "service/materials.py": "8aca30fa93a367fef3048217e29ef6f840b6a8569d9031c8a86b980c6f2d43ad",
+    "service/messages.py": "296ff6ff9d4ec857de69d7df2b510e6934bc79bd2761bb17d9051f3ec4d075a9",
+    "service/store.py": "82cf4b04d27b7573594df844e49cda0f0d57754d6fbf14b94859abe1d34b6802",
+    "tasks/drbench/research.yaml": "1e1d5ad6181e06ec135b9c15c48b515d47517b6c75815a83d56d3437d9c967fa",
+    "tasks/marble/research.yaml": "68dd147ec457433f08a4d0f22781b22b9cc7f6dd5be04e9ff8526b8a7847fde1",
+    "tools/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tools/client.py": "4b6835792967418d90ef70f131590e6cd2c4b20923df57909a9ba2d109f8ced9",
+    "tools/visualization/__init__.py": "8ac5090ae1b534b7a36a6358919d229f4a70bfbbe212b116720b067ecfb031fc",
+    "tools/visualization/__main__.py": "f62b759b2fe633bc41a4387bf504a2ec502f643dd5922dc64053c9203670ff3b",
+    "tools/visualization/history.py": "1719fc1b524a2d6824bfa77408ad223a29bd126ad18e7f2f71a7e4fac8fc0fc7",
+    "tools/visualization/server.py": "3b34e727898ecec9a93404feb68a8b8274223f00ca167130369762c5b03df0dc"
+  },
+  "comparison_worktree_sha256": "3a5c84423b3384a1f8abd6c3d1fb7ad3c2f025918f7998be1f47173b2cb5efda",
+  "original_checkpoint_replay": [
+    {
+      "task": "DR0001",
+      "wake_inputs_matched": 2,
+      "accepted_actions_and_next_members_matched": 1
+    },
+    {
+      "task": "DR0002",
+      "wake_inputs_matched": 2,
+      "accepted_actions_and_next_members_matched": 1
+    },
+    {
+      "task": "DR0003",
+      "wake_inputs_matched": 2,
+      "accepted_actions_and_next_members_matched": 1
+    }
+  ],
+  "historical_completed_or_scored_p2p_traces": [
+    {
+      "batch": "drbench-p2p-gpt-6-luna",
+      "task": "DR0001",
+      "activations_compared": 4,
+      "status": "completed",
+      "output_sha256": "f26c68af5f698d7c76abf8135d82079d6f82c7447a742bcc772c5e4988569487"
+    },
+    {
+      "batch": "drbench-p2p-gpt-6-luna",
+      "task": "DR0002",
+      "activations_compared": 5,
+      "status": "completed",
+      "output_sha256": "7256445f5a5202c3ca1d93e92388d025e1454bab79801e86d2a32331b68d3199"
+    },
+    {
+      "batch": "drbench-p2p-gpt-6-luna",
+      "task": "DR0003",
+      "activations_compared": 4,
+      "status": "completed",
+      "output_sha256": "7b73887f99ed598a38195f9db23edfc84d4e9b5c90ae246a44ae3bafcb9354ee"
+    },
+    {
+      "batch": "marble-p2p-gpt-5.6-luna",
+      "task": "research/1",
+      "activations_compared": 9,
+      "status": "completed",
+      "output_sha256": "66293f44812875d155626da0b7a38fff45efad384847392b4696f8caba8536a7"
+    },
+    {
+      "batch": "marble-p2p-gpt-5.6-luna",
+      "task": "research/2",
+      "activations_compared": 8,
+      "status": "completed",
+      "output_sha256": "4e65ab8da9700ba2fa80da40d5970e23fec696778a3813e4fb94b843de406b18"
+    },
+    {
+      "batch": "marble-p2p-gpt-5.6-luna",
+      "task": "research/3",
+      "activations_compared": 6,
+      "status": "completed",
+      "output_sha256": "3a5fe523abe7190e9b05a8e417c532109a8fb70630622649a19a98993cb7a946"
+    }
+  ],
+  "marble_seven_tool_native": {
+    "same_files_as_live_seven_tool_verification": [
+      "experiments/run_codex_research.py",
+      "experiments/codex_research_worker.py",
+      "scenarios/marble.py",
+      "scenarios/marble_web.py",
+      "tasks/marble/research.yaml",
+      "images/codex.Dockerfile"
+    ],
+    "live_receipt": "baseline-live.json",
+    "model": "gpt-5.6-luna",
+    "direct_children": [
+      5,
+      5,
+      3
+    ]
+  },
+  "work_docker_runs": [
+    {
+      "task": "DR0001",
+      "output": "3b1315a1f5644a3983ca07d20673ee2a-DR0001",
+      "image": "ghcr.io/mmunozm/drbench-services@sha256:62355c66022a5208767f534152e27432722c9dd0a4154891355e6d2580b51bb5",
+      "mode": "App",
+      "registered_tools": [
+        "InternetSearchTool",
+        "EnhancedURLFetchTool",
+        "SmartAnalysisTool",
+        "EnterpriseAPITool"
+      ],
+      "planner": "generated",
+      "checkpoint": false,
+      "successful_tool_calls": {},
+      "end_status": "planning_failed",
+      "error": "Server disconnected without sending a response.",
+      "runner": "tme",
+      "attempt": 1
+    },
+    {
+      "task": "DR0002",
+      "output": "3b1315a1f5644a3983ca07d20673ee2a-DR0002",
+      "image": "ghcr.io/mmunozm/drbench-services@sha256:62355c66022a5208767f534152e27432722c9dd0a4154891355e6d2580b51bb5",
+      "mode": "App",
+      "registered_tools": [
+        "InternetSearchTool",
+        "EnhancedURLFetchTool",
+        "SmartAnalysisTool",
+        "EnterpriseAPITool"
+      ],
+      "planner": "generated",
+      "model_success": 30,
+      "roster_size": 3,
+      "activations": [
+        [
+          "MKT01",
+          "planner_first"
+        ],
+        [
+          "SYN03",
+          "handoff"
+        ]
+      ],
+      "actions": [
+        [
+          "MKT01",
+          "handoff",
+          "SYN03"
+        ]
+      ],
+      "checkpoint": true,
+      "successful_tool_calls": {
+        "InternetSearchTool": 11
+      },
+      "end_status": "cancelled",
+      "planner_input_sha256": "a5e215074630be8db100c9677db3248349a5e98d8585a175c142d383c3f9b5bc",
+      "matches_historical_prompt": true,
+      "runner": "tme",
+      "attempt": 1
+    },
+    {
+      "task": "DR0003",
+      "output": "3b1315a1f5644a3983ca07d20673ee2a-DR0003",
+      "image": "ghcr.io/mmunozm/drbench-services@sha256:62355c66022a5208767f534152e27432722c9dd0a4154891355e6d2580b51bb5",
+      "mode": "App",
+      "registered_tools": [
+        "InternetSearchTool",
+        "EnhancedURLFetchTool",
+        "SmartAnalysisTool",
+        "EnterpriseAPITool"
+      ],
+      "planner": "generated",
+      "model_success": 38,
+      "roster_size": 3,
+      "activations": [
+        [
+          "LOYALTY_LEAD",
+          "planner_first"
+        ],
+        [
+          "CRM_ANALYST",
+          "initial_assignment"
+        ]
+      ],
+      "actions": [
+        [
+          "LOYALTY_LEAD",
+          "ready",
+          "CRM_ANALYST"
+        ]
+      ],
+      "checkpoint": true,
+      "successful_tool_calls": {
+        "InternetSearchTool": 2,
+        "EnterpriseAPITool": 4,
+        "SmartAnalysisTool": 4
+      },
+      "end_status": "cancelled",
+      "planner_input_sha256": "2e83cedccadc83f50a75a043c77b720c40f8f01f8a0e0581eee85cec9cc590c1",
+      "matches_historical_prompt": true,
+      "runner": "tme",
+      "attempt": 1
+    },
+    {
+      "task": "DR0001",
+      "output": "retry-DR0001",
+      "image": "ghcr.io/mmunozm/drbench-services@sha256:62355c66022a5208767f534152e27432722c9dd0a4154891355e6d2580b51bb5",
+      "mode": "App",
+      "registered_tools": [
+        "InternetSearchTool",
+        "EnhancedURLFetchTool",
+        "SmartAnalysisTool",
+        "EnterpriseAPITool"
+      ],
+      "planner": "generated",
+      "model_success": 31,
+      "roster_size": 3,
+      "activations": [
+        [
+          "REG001",
+          "planner_first"
+        ],
+        [
+          "SYN001",
+          "handoff"
+        ]
+      ],
+      "actions": [
+        [
+          "REG001",
+          "handoff",
+          "SYN001"
+        ]
+      ],
+      "checkpoint": true,
+      "successful_tool_calls": {
+        "InternetSearchTool": 15,
+        "EnhancedURLFetchTool": 4
+      },
+      "end_status": "cancelled",
+      "planner_input_sha256": "441fa80ed361bbe8ffaf5136bb931adc5ec840bb26cf246278e372c6edb78680",
+      "matches_historical_prompt": true,
+      "runner": "tme",
+      "attempt": 2
+    },
+    {
+      "task": "DR0001",
+      "output": "28367af506374949bc951ec1e68686e8-DR0001",
+      "image": "ghcr.io/mmunozm/drbench-services@sha256:62355c66022a5208767f534152e27432722c9dd0a4154891355e6d2580b51bb5",
+      "mode": "App",
+      "registered_tools": [
+        "InternetSearchTool",
+        "EnhancedURLFetchTool",
+        "SmartAnalysisTool",
+        "EnterpriseAPITool"
+      ],
+      "direct_children_observed": 2,
+      "checkpoint": true,
+      "successful_tool_calls": {
+        "InternetSearchTool": 3,
+        "EnhancedURLFetchTool": 1
+      },
+      "end_status": "cancelled",
+      "prompt_sha256": "dbd8c04a62e0a6ece5952238e7a92d81b1fa4ed1250b41cc489880214baea30e",
+      "matches_historical_prompt": true,
+      "runner": "codex-native",
+      "attempt": 1
+    },
+    {
+      "task": "DR0002",
+      "output": "28367af506374949bc951ec1e68686e8-DR0002",
+      "image": "ghcr.io/mmunozm/drbench-services@sha256:62355c66022a5208767f534152e27432722c9dd0a4154891355e6d2580b51bb5",
+      "mode": "App",
+      "registered_tools": [
+        "InternetSearchTool",
+        "EnhancedURLFetchTool",
+        "SmartAnalysisTool",
+        "EnterpriseAPITool"
+      ],
+      "direct_children_observed": 2,
+      "checkpoint": true,
+      "successful_tool_calls": {
+        "InternetSearchTool": 2
+      },
+      "end_status": "cancelled",
+      "prompt_sha256": "2d4864bddfe1152e89d00a788387e5dfa344fbe21cf294cb409d6326d84c655b",
+      "matches_historical_prompt": true,
+      "runner": "codex-native",
+      "attempt": 1
+    },
+    {
+      "task": "DR0003",
+      "output": "28367af506374949bc951ec1e68686e8-DR0003",
+      "image": "ghcr.io/mmunozm/drbench-services@sha256:62355c66022a5208767f534152e27432722c9dd0a4154891355e6d2580b51bb5",
+      "mode": "App",
+      "registered_tools": [
+        "InternetSearchTool",
+        "EnhancedURLFetchTool",
+        "SmartAnalysisTool",
+        "EnterpriseAPITool"
+      ],
+      "direct_children_observed": 2,
+      "checkpoint": true,
+      "successful_tool_calls": {
+        "InternetSearchTool": 1
+      },
+      "end_status": "cancelled",
+      "prompt_sha256": "3e5ed319b2a0a2bac86b0649ae2914c6ebe3b0421e0e1b1795fb7fba49dbb1f2",
+      "matches_historical_prompt": true,
+      "runner": "codex-native",
+      "attempt": 1
+    }
+  ]
+}

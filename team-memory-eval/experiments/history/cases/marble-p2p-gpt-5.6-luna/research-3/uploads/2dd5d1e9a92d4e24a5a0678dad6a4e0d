@@ -1,0 +1,19 @@
+Review of agent1 draft
+
+Status: submit-ready with minor recommended safeguards.
+
+Experimental design confirmed:
+- Dataset: public RelBench-style native multi-table datasets, retaining keys, timestamps, entity types, multiplicities, missingness, and provenance.
+- Splits: chronological future, entity-disjoint, relationship-disjoint, and severity-controlled structural shifts (degree, relation mixture, missingness, label informativeness), with IID only as reference.
+- Method: typed/schema-aware relational encoder, time decay, bounded provenance-tracked multi-hop neighborhoods, relation-specific gated/attention aggregation, tabular/GBDT fusion, ensemble/evidential uncertainty, and representation-distance plus disagreement OOD score.
+- Baselines: SQL aggregation + LightGBM/CatBoost, MLP, GCN/GraphSAGE/GAT, heterophily methods (H2GCN, MixHop, GPR-GNN, LINKX), relational MPNNs, graph-only models, and calibration alternatives. Ablate paths, decay, typed parameters, sampling, fusion, and uncertainty signals.
+- Metrics: ROC-AUC/PR-AUC, macro-F1/balanced accuracy, MAE/RMSE; NLL, Brier, ECE/ adaptive ECE; OOD AUROC/AUPR and fixed-coverage false-positive risk; risk-coverage and fixed-coverage selective risk; regression interval coverage/width; runtime, memory, scaling, subgroup/worst-shift results with seed CIs.
+
+Recommended wording safeguards:
+1. Explicitly state that every split is generated before target encoding/aggregation and that all features are censored at the prediction timestamp; this makes leakage prevention auditable.
+2. For relationship-disjoint evaluation, define whether held-out edges are removed from message passing and ensure reverse-edge leakage is also removed.
+3. Clarify that isotonic/temperature calibration is fit on a validation split from the same deployment regime (and optionally report cross-regime calibration), avoiding test leakage.
+4. Since public multi-table availability/licensing may vary, name RelBench datasets as the minimum reproducible suite and treat additional sources as optional extensions.
+5. Keep expected results explicitly hypotheses, as the draft does; avoid claiming the hybrid wins universally. Add calibration degradation under each shift and compute-vs-quality tradeoffs as primary outcomes.
+
+Central contribution: a shift-aware, uncertainty-aware head-to-head protocol that identifies when relational, graph, or tabular inductive bias is preferable, rather than merely proposing another GNN.

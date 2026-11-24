@@ -1,0 +1,50 @@
+{
+  "report_text": "# Data-driven loyalty to increase customer engagement\n\n**To:** David Lee, Marketing Manager, Lee's Market  \n**Date:** August 27, 2025\n\n## Recommendation\n\nUse loyalty as a permission-based learning loop: connect a member's shopping activity across stores, online ordering, and delivery; turn that activity and customers' stated preferences into useful savings and discovery; then test whether those experiences create more repeat shopping and profitable engagement. Start by refreshing the current baseline. The available Lee's Market measures are historical, not a picture of performance today.\n\n## What the evidence says\n\nLee's Q3 2023 loyalty workbook lists 320,000 members and 80,000 active members (25%). A separate Q3 2023 retention sheet reports 56% retention among 850 customers against a 65% goal. An October 2023 email reports loyalty redemptions at 18% of sales, with a stated annual increase of 5%; it does not clarify whether that means a relative increase or five percentage points. These figures point to activation and retention as opportunities, but definitions and baselines should be checked before setting a current target.\n\nLee's internal engagement report says segmented campaigns had 12% higher engagement and personalized CRM email raised open rates 15%; it also reports 35% redemption for CRM-driven loyalty offers in Q2 2024. The source does not provide methods or comparison groups. Treat these results as promising hypotheses, not expected lift. Redemption and opens are useful diagnostics, but do not establish incremental sales or profit.\n\nExternal research supports making benefits relevant and easy to use. Deloitte's 2024 consumer loyalty survey reports that 86% of surveyed consumers value financial rewards and simplicity/ease, and 80% value flexibility in earning and redeeming. A separate Deloitte Digital study reports that nearly three in four consumers want personalized loyalty rewards and nearly eight in ten want personalization that helps them save money. These are survey preferences, not Lee's Market forecasts. BCG describes loyalty data as a way for grocers to build first-party customer understanding and scale personalized marketing.\n\n## How to apply this at Lee's Market\n\n1. **Refresh and join the customer view.** Confirm today's active-member, retention, redemption, and channel-linkage baselines. Use a stable loyalty ID to connect point-of-sale, e-commerce, and delivery purchases where customers have chosen to participate. An October 2023 email says online loyalty integration was being explored with IT; verify its current status before planning around it.\n\n2. **Build useful, behavior-based segments.** Start with recency, visit frequency, channel, category interests, and explicit communication or product preferences. Lee's internal material names Cultural Enthusiasts and Health-Conscious Shoppers; validate how those groups were defined and whether they remain useful. Do not infer ethnicity, religion, or health conditions from a basket. Use customer-selected language, dietary, and communication preferences when relevant.\n\n3. **Give each segment a clear reason to engage.** Test savings on frequently purchased items alongside discovery rewards such as new-product samples, prepared-food or bakery offers, recipes, and seasonal or cultural food content. Let members choose simple reward options and make earning and redemption work across store and digital channels. Use preference and purchase signals to time relevant reminders, welcome offers, replenishment prompts, and lapsed-member invitations, with frequency limits and easy preference controls.\n\n4. **Run controlled pilots and measure incremental value.** For two or three validated segments, compare a personalized treatment with a randomly assigned holdout receiving the current experience. Track member activation, repeat visits/orders, category breadth, cross-channel use, redemption, and opt-outs. Make incremental repeat rate and contribution margin after discounts and reward costs the primary decision measures; do not scale a campaign solely because it raises opens or redemptions.\n\n5. **Protect trust while personalizing.** Explain what data supports the loyalty experience and how it benefits members, provide clear choices for marketing and personalization, limit internal access, and secure customer data. Keep personalized offers distinct from individualized base pricing; have privacy counsel review the program for both Canada and the U.S. before launch. The Office of the Privacy Commissioner of Canada and the FTC provide relevant official consent and privacy/security guidance.\n\n## First 90 days\n\n- **Days 0–30:** Refresh the baseline, document active-member and retention definitions, check member matching across channels, and validate segment definitions and customer preferences.\n- **Days 31–60:** Launch controlled tests for a small set of segments and behaviors, with simple savings-oriented and discovery-oriented reward options.\n- **Days 61–90:** Compare outcomes with holdouts, subtract reward and discount costs, review opt-outs and customer feedback, and expand only the treatments that improve incremental repeat activity and contribution margin.\n\n## Source notes\n\nInternal sources: `tmplm551a61.xlsx` (Loyalty Program Performance, 2023-09-30); `tmp97ouw3nz.xlsx` (Customer Retention Metrics, Q3 2023); Emily Chen's email to David Lee, “Loyalty Program Performance Q3 2023,” October 17, 2023; `tmpy7sclef8.pdf` (Enhancing Engagement Through Loyalty Programs); Emily Chen's email to David Lee, “Re: Loyalty Program Performance Q3 2023,” October 17, 2023. External originals: Deloitte, 2024 Consumer Loyalty Survey (https://www.deloitte.com/us/en/services/consulting/articles/brand-loyalty-program-consumer-behavior.html); Deloitte Digital, personalization and loyalty rewards study (https://www.deloittedigital.com/us/en/insights/research/personalization-customer-loyalty-program-rewards.html); BCG, First-Party Data Is Retail's Next Growth Engine (https://www.bcg.com/publications/2023/first-party-data-leads-next-growth-engine-in-retail); Office of the Privacy Commissioner of Canada, Guidelines for obtaining meaningful consent (https://www.priv.gc.ca/en/privacy-topics/collecting-personal-information/consent/gl_omc_201805/); FTC, Privacy and Security (https://www.ftc.gov/business-guidance/privacy-security).",
+  "report_insights": [
+    {
+      "claim": "Lee's Q3 2023 workbook recorded 320,000 loyalty members, 80,000 active (25%); retention was 56% versus a 65% goal among 850 customers.",
+      "citations": [
+        "tmplm551a61.xlsx — Loyalty Program Performance, 2023-09-30",
+        "tmp97ouw3nz.xlsx — Customer Retention Metrics, Q3 2023"
+      ]
+    },
+    {
+      "claim": "Lee's internal report associated segmented campaigns with 12% higher engagement, personalized CRM email with 15% higher opens, and Q2 2024 CRM-driven offers with 35% redemption; methods and comparison groups were not stated.",
+      "citations": [
+        "tmpy7sclef8.pdf — Enhancing Engagement Through Loyalty Programs"
+      ]
+    },
+    {
+      "claim": "An October 2023 internal email reported loyalty redemptions at 18% of sales and a 5% annual increase, without specifying whether the increase was relative or in percentage points.",
+      "citations": [
+        "Email from emily.chen@leesmarket.com to David Lee on 17 Oct 2023, subject: Loyalty Program Performance Q3 2023"
+      ]
+    },
+    {
+      "claim": "Deloitte's 2024 consumer survey found that 86% valued financial rewards and simplicity/ease and 80% valued flexibility in earning and redeeming; a separate Deloitte Digital survey found near three-in-four wanted personalized rewards and near eight-in-ten wanted savings-oriented personalization.",
+      "citations": [
+        "https://www.deloitte.com/us/en/services/consulting/articles/brand-loyalty-program-consumer-behavior.html",
+        "https://www.deloittedigital.com/us/en/insights/research/personalization-customer-loyalty-program-rewards.html"
+      ]
+    },
+    {
+      "claim": "BCG describes grocery loyalty programs as a source of first-party data that can support more personalized marketing; Lee's should test this against its own current baseline.",
+      "citations": [
+        "https://www.bcg.com/publications/2023/first-party-data-leads-next-growth-engine-in-retail"
+      ]
+    },
+    {
+      "claim": "An October 2023 email says Lee's was exploring online loyalty integration with IT, so the current integration status should be verified before designing omnichannel campaigns.",
+      "citations": [
+        "Email from emily.chen@leesmarket.com to David Lee on 17 Oct 2023, subject: Re: Loyalty Program Performance Q3 2023"
+      ]
+    },
+    {
+      "claim": "Use clear privacy choices and secure data handling as program design principles, with Canadian and U.S. privacy review before launch.",
+      "citations": [
+        "https://www.priv.gc.ca/en/privacy-topics/collecting-personal-information/consent/gl_omc_201805/",
+        "https://www.ftc.gov/business-guidance/privacy-security"
+      ]
+    }
+  ]
+}

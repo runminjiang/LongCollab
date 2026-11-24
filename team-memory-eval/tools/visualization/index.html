@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Team Trace · 团队运行观察台</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/style.css" />
+    <script defer src="/app.js"></script>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <i class="logo" aria-hidden="true"><b></b><b></b><b></b></i>Team Trace
+      </div>
+      <h2>运行目录</h2>
+      <div id="library"></div>
+      <button id="openImport" class="import">
+        <span aria-hidden="true">＋</span> 打开轨迹文件
+      </button>
+      <input type="file" id="file" accept=".jsonl" hidden />
+      <div class="sidefoot"><i class="dot"></i> 本机只读观察</div>
+    </aside>
+    <main>
+      <header>
+        <div class="crumb">Team Memory Eval <span>/</span> 运行观察</div>
+        <span id="sync" role="status"></span>
+      </header>
+      <div class="workspace">
+        <div class="heading">
+          <div>
+            <h1>团队运行观察台</h1>
+            <div id="runMeta" class="meta"></div>
+          </div>
+          <div id="status"></div>
+        </div>
+        <div id="notice" role="alert" hidden></div>
+        <div id="metrics" class="metrics"></div>
+        <section class="members panel">
+          <div class="panelhead">
+            <h2>团队成员</h2>
+            <span id="rosterCount"></span>
+          </div>
+          <div id="members" class="memberlist"></div>
+        </section>
+        <div class="columns">
+          <section class="panel timeline">
+            <div class="panelhead">
+              <h2>事件时间线</h2>
+              <label class="filter"
+                ><input id="own" type="checkbox" />仅看该成员</label
+              >
+            </div>
+            <div id="events" class="feed"></div>
+          </section>
+          <section class="panel inspector">
+            <div class="panelhead">
+              <h2>成员观察</h2>
+              <span id="inspectorId"></span>
+            </div>
+            <div id="identity"></div>
+            <nav class="tabs" aria-label="成员观察内容">
+              <button data-tab="input">收到的信息</button
+              ><button data-tab="native">原生会话</button
+              ><button data-tab="detail">事件详情</button>
+            </nav>
+            <div id="detail" class="detail"></div>
+          </section>
+        </div>
+      </div>
+      <footer>
+        <div class="playback">
+          <button id="prev" title="上一个事件" aria-label="上一个事件">‹</button
+          ><button id="next" title="下一个事件" aria-label="下一个事件">
+            ›
+          </button>
+        </div>
+        <label for="cursor">回放位置</label
+        ><input id="cursor" type="range" min="0" max="0" value="0" /><output
+          id="position"
+        ></output
+        ><button id="follow">跟随最新</button>
+      </footer>
+    </main>
+  </body>
+</html>

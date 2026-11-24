@@ -1,0 +1,45 @@
+{
+  "members": [
+    {
+      "id": "agent1",
+      "role": "agent1",
+      "assignment": "Lead the literature review and integrate the team’s work into the final 5q research idea. Search the research resource for relevant work on HARMONIC, cognitive-robot architectures, explainable planning, language-conditioned robot learning, and human-robot collaboration; identify the central gap and draft Question 1 and Question 2. Assemble the final idea output from all contributions, upload it, and submit it.",
+      "resource_ids": [
+        "research"
+      ]
+    },
+    {
+      "id": "agent2",
+      "role": "agent2",
+      "assignment": "Analyze robustness and domain-shift issues in vision-language-action and language-guided robotics. Provide a concrete proposal for adversarially and distributionally robust multimodal perception and communication within HARMONIC, including candidate benchmarks, baselines, and metrics for Question 5. Send the written contribution to agent1 for inclusion in the final idea output.",
+      "resource_ids": [
+        "research"
+      ]
+    },
+    {
+      "id": "agent3",
+      "role": "agent3",
+      "assignment": "Develop the brainstorming analysis of explainable, causal, and interpretable robot decision-making. Specify how a robot could generate faithful explanations of plans, actions, teammate modeling, and failures, and articulate the technical obstacles for Question 3 and the limitations of prior work for Question 4. Send a concise draft to agent1 for inclusion in the final idea output.",
+      "resource_ids": [
+        "research"
+      ]
+    },
+    {
+      "id": "agent4",
+      "role": "agent4",
+      "assignment": "Design the experimental methodology for the proposed research idea. Define a simulated and, if feasible, physical multi-robot benchmark involving a UGV and drone, intervention and novel-disturbance tests, ablations, baselines, data splits, and metrics covering task success, generalization, collaboration efficiency, explanation fidelity, calibration, and latency. Send the methodology and expected results to agent1 for inclusion in the final idea output.",
+      "resource_ids": [
+        "research"
+      ]
+    },
+    {
+      "id": "agent5",
+      "role": "agent5",
+      "assignment": "Contribute the causal, graph-based, and robustness components of the proposal. Design a structured memory or interaction graph linking observations, goals, actions, teammate beliefs, and explanations, with uncertainty-aware causal validation and adversarial disturbance tests. Recommend concrete hypotheses, datasets or generated scenarios, and analyses that distinguish faithful explanations from plausible text. Send the contribution to agent1 for inclusion in the final idea output.",
+      "resource_ids": [
+        "research"
+      ]
+    }
+  ],
+  "first_member": "agent1"
+}

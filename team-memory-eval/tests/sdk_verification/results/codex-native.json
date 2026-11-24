@@ -1,0 +1,10 @@
+{
+  "native": {
+    "status": "passed",
+    "subagents": 1
+  },
+  "single": {
+    "status": "passed",
+    "subagents": 0
+  }
+}

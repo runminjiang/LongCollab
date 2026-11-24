@@ -1,0 +1,58 @@
+{
+  "report_text": "# Data-driven loyalty plan for Lee’s Market\n\n**To:** David Lee, Marketing Manager  \n**As of:** 27 August 2025\n\n## Recommendation\n\nUse Lee’s first-party shopping data to make loyalty more useful across stores, online shopping, and delivery. Start with an eight-week controlled pilot of relevant category offers and helpful meal or replenishment content. Keep the existing rewards rules during the test so the team can isolate the effect of personalization before considering a broader points, tier, or gamification redesign. Tailor offers to Lee’s mix of fresh produce, meat and seafood, bakery and prepared foods, pantry, and household items. Examples to test include complementary meal baskets, discovery offers for products customers have not tried, and reminders based on repeat-purchase timing. These are hypotheses, not proven lifts.\n\n## What Lee’s data says\n\nThe loyalty workbook reports 350,000 enrolled and 87,500 active members at 31 March 2024. Its engagement rate is 25% at each of nine listed dates, from December 2021 through March 2024. Membership and active-member counts each rose 75% between the first and last listed dates, while the rate stayed flat. The workbook does not define what counts as active engagement, so first standardize that definition before comparing campaigns. [I1]\n\nThe retention workbook reports 62% retention in Q2 2024 against a 65% goal, up from 52% in Q4 2022. Its cohort and denominator are not specified, and the trend does not establish that loyalty activity caused the increase. An internal CRM report records a 35% CRM-offer redemption rate in Q2 2024 and 12% higher historical engagement for campaigns aimed at named segments, but neither the redemption denominator nor the segment comparison method is given. Treat both as directional baselines to validate. A separate internal report says a 2022 survey found 72% of respondents valued product variety over reward incentives, but it gives no sample size or method; test product discovery and useful baskets rather than treating that figure as representative. [I2][I3][I4]\n\nA separate Q3 2023 email says loyalty redemptions represented 18% of sales revenue, with a 5% annual increase; it does not clarify whether that increase is relative or in percentage points. This revenue share is different from an offer redemption rate and should not be combined with it. [I5]\n\nExternal research provides useful test ideas, not proof of impact for Lee’s. BCG reported declining US engagement and loyalty versus its earlier research, but the accessible summary omits enough methodology that those numbers are not Lee’s benchmark. Kroger was reported to be testing personalized coupons for in-store-only shoppers, with no result reported. [E1][E2]\n\n## 90-day test-and-learn plan\n\n**Weeks 1–3: prepare the data and rules.** Audit whether loyalty IDs can connect POS purchases with online and delivery orders, offer exposure, redemption, and campaign response. Verify which fields are available, their match rates, and whether each use is covered by the customer’s permissions. Record offer eligibility, assignment, delivery, activation, redemption, transaction lines, channel/store, discount, margin, returns, and opt-outs. Deduplicate identities and document exclusions. Review consent, retention, access, and opt-out controls for US and Canadian customers before activation. The internal materials reviewed do not document those controls in enough detail to assume they are in place. [I3][I6]\n\nBuild audiences from observable shopping behavior: recency, frequency, category mix, channel, and declared preferences. Validate the definitions of existing segments such as Cultural Enthusiasts and Health-Conscious Shoppers before using them. Do not infer ethnicity or other sensitive traits from names or purchases. Include in-store-only shoppers where permitted, using an easy-to-redeem receipt or POS offer as well as opted-in digital channels.\n\n**Weeks 4–11: run a randomized pilot.** Within eligible members, compare (A) a behavior-relevant offer or meal/replenishment message, (B) a generic offer with similar expected cost, and (C) business as usual. Randomize within lifecycle segment and store/channel where feasible; choose sample size using a power calculation. Keep the offer value and eligibility rules clear, confirm stock with merchandising and store teams, and use a holdout so normal purchases are not mistaken for campaign lift.\n\n**Week 12: decide what to scale.** Set the primary outcome as incremental contribution margin per assigned eligible member versus business as usual, after discounts and offer costs. Track engagement separately: define an active member as a member with at least one identified purchase in a fixed period; report active-member rate, repeat trips, category breadth, offer activation and redemption (each with an explicit denominator), and cross-channel purchasing. Compare retention for a fixed cohort and window. Guard against margin erosion, discounting purchases that would have happened anyway, stockouts, opt-outs, and complaints. Scale only treatments that improve incremental value while preserving customer experience; otherwise refine the offer or audience and retest.\n\n## Evidence limits\n\nLee’s historical metrics use inconsistent or incomplete definitions, and public competitor examples do not report causal results. Do not promise a sales or retention lift in advance. Establish clean baselines and a control group, then use the results to decide whether personalized value, in-store reach, or a later rewards redesign deserves investment.\n\n## Sources\n\n[I1] Lee’s Market, `Lees_Market_Loyalty_Program_Performance_Metrics.xlsx` (undated; listed reporting dates 2021-12-31 to 2024-03-31).\n\n[I2] Lee’s Market, `Lees_Market_Customer_Retention_Metrics.xlsx` (undated; Q4 2022 to Q2 2024).\n\n[I3] Lee’s Market internal CRM/loyalty report, `tmp2y82spuv.pdf` (undated; retrieved source ID `doc_15e8eb1d_1795178749`).\n\n[I4] Lee’s Market internal customer/segment report, `tmp6ikr03cs.pdf` (undated; retrieved source ID `doc_a4ec8367_1795178745`).\n\n[I5] Email from Emily Chen <emily.chen@leesmarket.com> on 17 Oct 2023, subject “Loyalty Program Performance Q3 2023”.\n\n[I6] Email from Jason Kim <jason.kim@leesmarket.com> on 24 Jul 2024, subject “Re: Loyalty Program Enhancement Discussion” (discusses IT security metrics; it does not establish customer data permissions).\n\n[E1] Boston Consulting Group, “Loyalty Programs Are Growing—So Are Customer Expectations” (9 Dec 2024), https://www.bcg.com/publications/2024/loyalty-programs-customer-expectations-growing.\n\n[E2] PYMNTS, “Kroger Tests Personalized Coupons to Win Loyalty of In-Store-Only Shoppers” (27 Jan 2023), https://www.pymnts.com/news/loyalty-and-rewards-news/2023/kroger-tests-personalized-coupons-win-loyalty-in-store-only-shoppers/.",
+  "report_insights": [
+    {
+      "claim": "At the last listed date (31 March 2024), Lee’s loyalty program reported 350,000 enrolled members and 87,500 active members; the reported engagement rate stayed at 25% across all nine listed dates. The source does not define qualifying engagement.",
+      "citations": [
+        "Lee’s Market, Lees_Market_Loyalty_Program_Performance_Metrics.xlsx (undated; reporting dates 2021-12-31 to 2024-03-31)."
+      ]
+    },
+    {
+      "claim": "Reported customer retention was 62% in Q2 2024 against a 65% goal, rising from 52% in Q4 2022; the workbook does not specify the cohort or denominator, so this is a directional trend rather than evidence of loyalty-program causation.",
+      "citations": [
+        "Lee’s Market, Lees_Market_Customer_Retention_Metrics.xlsx (undated; Q4 2022 to Q2 2024)."
+      ]
+    },
+    {
+      "claim": "Internal records report a 35% CRM-offer redemption rate in Q2 2024 and 12% higher historical engagement for campaigns targeting named segments, but the redemption denominator and engagement comparison method are missing.",
+      "citations": [
+        "Lee’s Market internal CRM/loyalty report, tmp2y82spuv.pdf (undated; source ID doc_15e8eb1d_1795178749)."
+      ]
+    },
+    {
+      "claim": "An internal report says a 2022 survey found 72% valued product variety over reward incentives, but it provides no sample size or methodology; this should guide a test of product discovery, not be used as a representative customer preference benchmark.",
+      "citations": [
+        "Lee’s Market internal customer/segment report, tmp6ikr03cs.pdf (undated; source ID doc_a4ec8367_1795178745)."
+      ]
+    },
+    {
+      "claim": "An internal email reports that loyalty redemptions accounted for 18% of Q3 2023 sales revenue, with a 5% annual increase; it does not say whether the increase is relative or percentage-point change, and this metric differs from offer redemption rate.",
+      "citations": [
+        "Email from Emily Chen <emily.chen@leesmarket.com> on 17 Oct 2023, subject “Loyalty Program Performance Q3 2023”."
+      ]
+    },
+    {
+      "claim": "BCG reported weaker US engagement and loyalty compared with earlier research, but the available summary omits methodology; Kroger’s reported personalized coupons for in-store-only shoppers were a test with no outcome reported. These support hypotheses to test, not an expected lift for Lee’s Market.",
+      "citations": [
+        "Boston Consulting Group, “Loyalty Programs Are Growing—So Are Customer Expectations” (9 Dec 2024), https://www.bcg.com/publications/2024/loyalty-programs-customer-expectations-growing.",
+        "PYMNTS, “Kroger Tests Personalized Coupons to Win Loyalty of In-Store-Only Shoppers” (27 Jan 2023), https://www.pymnts.com/news/loyalty-and-rewards-news/2023/kroger-tests-personalized-coupons-win-loyalty-in-store-only-shoppers/."
+      ]
+    },
+    {
+      "claim": "A randomized pilot comparing behavior-relevant offers, a similar-cost generic offer, and business as usual can separate engagement and incremental margin effects; current data and public competitor examples do not establish causal lift.",
+      "citations": [
+        "Lee’s Market, Lees_Market_Loyalty_Program_Performance_Metrics.xlsx (undated).",
+        "Lee’s Market, Lees_Market_Customer_Retention_Metrics.xlsx (undated).",
+        "Boston Consulting Group, “Loyalty Programs Are Growing—So Are Customer Expectations” (9 Dec 2024), https://www.bcg.com/publications/2024/loyalty-programs-customer-expectations-growing.",
+        "PYMNTS, “Kroger Tests Personalized Coupons to Win Loyalty of In-Store-Only Shoppers” (27 Jan 2023), https://www.pymnts.com/news/loyalty-and-rewards-news/2023/kroger-tests-personalized-coupons-win-loyalty-in-store-only-shoppers/."
+      ]
+    },
+    {
+      "claim": "The loyalty materials reviewed do not document customer consent, permitted data uses, retention periods, or access controls. Confirm those controls before linking and activating cross-channel customer data; the IT-security email is not evidence of customer data permissions.",
+      "citations": [
+        "Lee’s Market internal CRM/loyalty report, tmp2y82spuv.pdf (undated; source ID doc_15e8eb1d_1795178749).",
+        "Email from Jason Kim <jason.kim@leesmarket.com> on 24 Jul 2024, subject “Re: Loyalty Program Enhancement Discussion”."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "status": "completed",
+  "scoring": {
+    "status": "scored",
+    "model": "fixture",
+    "metrics": {
+      "scripted": true
+    }
+  },
+  "turns": 5,
+  "senders": [
+    "agent1",
+    "agent2",
+    "agent3",
+    "agent4",
+    "agent5"
+  ],
+  "usage": [
+    {
+      "actor": "planner",
+      "category": "planner",
+      "tokens": 13,
+      "cached_tokens": 0,
+      "usd": null
+    },
+    {
+      "actor": "agent1",
+      "category": "worker",
+      "tokens": 13,
+      "cached_tokens": 2,
+      "usd": null
+    },
+    {
+      "actor": "agent2",
+      "category": "worker",
+      "tokens": 13,
+      "cached_tokens": 2,
+      "usd": null
+    },
+    {
+      "actor": "agent3",
+      "category": "worker",
+      "tokens": 13,
+      "cached_tokens": 2,
+      "usd": null
+    },
+    {
+      "actor": "agent4",
+      "category": "worker",
+      "tokens": 13,
+      "cached_tokens": 2,
+      "usd": null
+    },
+    {
+      "actor": "agent5",
+      "category": "worker",
+      "tokens": 26,
+      "cached_tokens": 4,
+      "usd": null
+    }
+  ]
+}

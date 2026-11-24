@@ -1,0 +1,19 @@
+{
+  "model": "gpt-5.6-luna",
+  "codex": "codex-cli 0.166.0",
+  "image_id": "sha256:b3e812610d0f787318d52f962e922bda3dc36f7b8f564c6144cc429037642198",
+  "effort": "high",
+  "tools": [
+    "get_related_papers",
+    "get_recent_papers",
+    "collect_publications_and_coauthors",
+    "get_paper_by_keyword",
+    "get_paper_by_arxiv_id",
+    "get_paper_by_title",
+    "fetch_webpage"
+  ],
+  "mode": "native",
+  "timeout_seconds": 5400,
+  "model_auth": "chatgpt",
+  "prompt_sha256": "b1bff536ac61d081563bb8d9d987a335041d9dc0f6dc5885d9a80af1a463a895"
+}

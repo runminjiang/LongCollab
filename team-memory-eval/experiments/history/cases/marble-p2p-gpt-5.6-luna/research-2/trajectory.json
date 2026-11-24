@@ -1,0 +1,149 @@
+{
+  "task": "research/2",
+  "benchmark": "marble",
+  "execution": "completed",
+  "resources": {
+    "research": "Use python -m tools.client call get_paper_by_keyword '{\"keyword\":\"research term\",\"max_papers\":3}' for paper search. Other operations include get_recent_papers(domain,max_results), get_related_papers(query,num_results), get_paper_by_title(title), get_paper_by_arxiv_id(arxiv_id), collect_publications_and_coauthors(author). Use fetch_webpage(url) to read a public web page. The task introduction and output format are in the public goal. No enterprise files are mounted."
+  },
+  "planner_input_sha256": "9553aca2e84a5a32427f58a9ec88d8fccdf4304b20c14f276f20d67aceb26366",
+  "turns": [
+    {
+      "actor": "agent1",
+      "input_sha256": "97aa88dfffdf301ff8c28fd9c372c305d5084d46597e9907272fbe19f9b2a544",
+      "session_id": "01a1f429-c421-78c3-b0fd-48e0b8a74ebb",
+      "action": {
+        "kind": "ready",
+        "submissions": {
+          "idea": "403ef77e79a34dcd8b988198c2401afb"
+        }
+      },
+      "uploads": [
+        {
+          "id": "403ef77e79a34dcd8b988198c2401afb",
+          "actor": "agent1",
+          "name": "harmonic_5q.txt",
+          "path": "uploads/403ef77e79a34dcd8b988198c2401afb"
+        }
+      ]
+    },
+    {
+      "actor": "agent2",
+      "input_sha256": "9e24d3b2d895298f5963065d88e0914919a7b39f5ef526e361557baa4f76d360",
+      "session_id": "01a1f42c-0356-7201-b207-0c222127dc26",
+      "action": {
+        "kind": "handoff",
+        "to": "agent1",
+        "message": "Robustness/domain-shift contribution: Existing systems such as SayCan, PaLM-E, RT-2, Inner Monologue, and Open X-Embodiment improve language grounding and action generation, but generally assume benign, stationary observations. Robust VLM research mostly studies classification attacks or single-agent prediction, while cognitive/HRI architectures emphasize planning and explanation without testing adversarial visual, linguistic, or teammate inputs. Central gap: HARMONIC needs uncertainty-aware robustness at the strategic–tactical interface, including calibrated communication, clarification, and safe abstention.\n\nProposed Robust HARMONIC (RH): maintain a multimodal belief over objects, goals, map state, and teammate intent. Combine modality-specific encoders with domain-generalizing adapters or instance-conditioned prompts; consistency training across RGB/depth/thermal, drone/UGV views, paraphrased commands, and synthetic corruptions; adversarial training against visual patches, occlusions, spoofed labels, misleading instructions, and stale/noisy teammate messages; and a risk-sensitive fusion gate that can request clarification, defer to another robot, or execute a safe fallback. Messages should include confidence, provenance, and expected effects. A structured interaction graph should link observation → belief → goal → action → outcome, enabling causal diagnosis and faithful explanations.\n\nBenchmark: procedurally generate UGV+drone search/repair missions in Isaac Sim or Habitat, with held-out buildings, lighting/weather, object appearances, camera poses, layouts, paraphrases, and teammate policies. Complement with ALFRED/TEACh and Habitat/BEHAVIOR; add a small physical UGV-drone test if feasible. Train on clean domains and evaluate clean, covariate-shifted, compositional-shifted, and attacked settings. Baselines: HARMONIC/DIARC-style symbolic pipeline; nominal VLA/LLM planner; robust-training-only; domain-adapter-only; and perfect-perception oracle.\n\nMetrics: task success and weighted mission utility; attack/corruption success and worst-group performance; cross-domain and compositional generalization; collision, unsafe-action, and recovery rates; clarification/defer precision and cost; communication turns, bandwidth, and latency; calibration (ECE, Brier, NLL, selective risk/coverage); robustness curves/AUAC and empirical attack success; and explanation faithfulness using action replay, modality/message deletion, causal interventions, and human usefulness ratings. Hypothesis: multimodal consistency plus risk-sensitive abstention improves worst-case success and calibration with modest nominal cost, especially under unseen layouts and spoofing. Ablate adapters, consistency loss, graph memory, and abstention. Explanations should be more faithful because they are generated from logged causal interaction graphs rather than post-hoc fluent text.",
+        "ready": true
+      },
+      "uploads": []
+    },
+    {
+      "actor": "agent1",
+      "input_sha256": "70684b5b9c1002f550cacbbef90fb6e5844f07da617da994d3793b6dc05a9de5",
+      "session_id": "01a1f429-c421-78c3-b0fd-48e0b8a74ebb",
+      "action": {
+        "kind": "ready",
+        "submissions": {
+          "idea": "27a132482618459cb7850671120d0e31"
+        }
+      },
+      "uploads": [
+        {
+          "id": "27a132482618459cb7850671120d0e31",
+          "actor": "agent1",
+          "name": "harmonic_5q.txt",
+          "path": "uploads/27a132482618459cb7850671120d0e31"
+        }
+      ]
+    },
+    {
+      "actor": "agent4",
+      "input_sha256": "0dbe509a4fed09468719e583fa7962b00f7c0abb0dc6486a6e319e6a83668362",
+      "session_id": "01a1f430-0294-7532-9706-4432bb9b1e14",
+      "action": {
+        "kind": "handoff",
+        "to": "agent1",
+        "message": "Methodology contribution uploaded. It covers HARMONIC-Rescue UGV–drone benchmarks, compositional and domain-shift splits, nominal/intervention/adversarial disturbances, centralized/decentralized/VLA/LLM/reactive baselines, task/collaboration/robustness/calibration metrics, causal explanation faithfulness and counterfactual tests, ablations, statistical analysis, and falsifiable hypotheses.",
+        "files": [
+          "c3b0ce46de754defa7606e8002e3d611"
+        ],
+        "ready": true
+      },
+      "uploads": [
+        {
+          "id": "c3b0ce46de754defa7606e8002e3d611",
+          "actor": "agent4",
+          "name": "agent4_methodology.md",
+          "path": "uploads/c3b0ce46de754defa7606e8002e3d611"
+        }
+      ]
+    },
+    {
+      "actor": "agent1",
+      "input_sha256": "2b8799808764477477747219e76c4eea0ea1456dbfdf8b410a08ff2f781710de",
+      "session_id": "01a1f429-c421-78c3-b0fd-48e0b8a74ebb",
+      "action": {
+        "kind": "ready",
+        "submissions": {
+          "idea": "27a132482618459cb7850671120d0e31"
+        }
+      },
+      "uploads": []
+    },
+    {
+      "actor": "agent3",
+      "input_sha256": "8a1d638a667e71b710d6afe108360ee3e896a797693a2b832e2b7f7492c83f8d",
+      "session_id": "01a1f433-e832-7af1-990a-0d3973957009",
+      "action": {
+        "kind": "handoff",
+        "to": "agent1",
+        "message": "I completed the explainability contribution. The proposal centers on a typed interaction graph linking observations, uncertainty, beliefs, goals, teammate models, candidate plans, actions, outcomes, and explanations. It requires factual, contrastive, and counterfactual explanations grounded in graph provenance and verified through interventions. Key challenges are partial observability, hierarchical strategic/tactical decisions, hidden teammate beliefs, feasible counterfactuals, uncertainty calibration, and adversarial/distribution-shift inputs. Prior work commonly assumes symbolic stationary models or evaluates plausibility/trust rather than causal faithfulness; VLA explanations are usually post-hoc and unverified. Suggested hypotheses and metrics include intervention-based causal fidelity, necessity/sufficiency, counterfactual agreement, explanation calibration, human action prediction/correction, and separate fluency versus faithfulness. Full contribution is attached.",
+        "files": [
+          "9fc60042b85748d484a70efb75030853"
+        ],
+        "ready": true
+      },
+      "uploads": [
+        {
+          "id": "9fc60042b85748d484a70efb75030853",
+          "actor": "agent3",
+          "name": "agent3_contribution.md",
+          "path": "uploads/9fc60042b85748d484a70efb75030853"
+        }
+      ]
+    },
+    {
+      "actor": "agent1",
+      "input_sha256": "81fadcaad0244e1f7e168b9bc2ef7ff096ec1d4448158cb0a55248618bc570dd",
+      "session_id": "01a1f429-c421-78c3-b0fd-48e0b8a74ebb",
+      "action": {
+        "kind": "ready",
+        "submissions": {
+          "idea": "27a132482618459cb7850671120d0e31"
+        }
+      },
+      "uploads": []
+    },
+    {
+      "actor": "agent5",
+      "input_sha256": "91ee5d094b5752916587e13600912dca7d53132ea58a91f5366f2f6d1e7ae275",
+      "session_id": "01a1f43a-cf80-7aa3-8e7b-9370a75284e3",
+      "action": {
+        "kind": "ready",
+        "submissions": {
+          "idea": "ba005fd4f02e4295a40ef699b7968605"
+        },
+        "ready": true
+      },
+      "uploads": [
+        {
+          "id": "ba005fd4f02e4295a40ef699b7968605",
+          "actor": "agent5",
+          "name": "agent5_contribution.md",
+          "path": "uploads/ba005fd4f02e4295a40ef699b7968605"
+        }
+      ]
+    }
+  ]
+}

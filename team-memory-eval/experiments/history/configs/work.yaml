@@ -1,0 +1,19 @@
+benchmark: drbench
+harness: codex
+provider: openai
+model: gpt-6-luna
+member_reasoning_effort: high
+planner_mode: generated
+planner_chat_template_kwargs: {}
+protocol: point_to_point
+seed: 7
+max_turns: 40
+max_agent_tokens: 500000
+judge_model: gpt-5.6-terra
+judge_provider: openai
+task_ids:
+- DR0001
+- DR0002
+- DR0003
+api_key_env: OPENAI_API_KEY
+judge_api_key_env: TME_JUDGE_API_KEY

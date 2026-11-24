@@ -1,0 +1,10 @@
+{
+  "task_id": 2,
+  "task_evaluation": {
+    "innovation": 5,
+    "safety": 5,
+    "feasibility": 4
+  },
+  "evaluate_llm": "openai/gpt-5.6-terra",
+  "llm": "openai/gpt-5.6-luna"
+}

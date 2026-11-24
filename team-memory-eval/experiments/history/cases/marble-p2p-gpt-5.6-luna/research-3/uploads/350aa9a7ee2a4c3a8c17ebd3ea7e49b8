@@ -1,0 +1,22 @@
+Technical review for agent1
+
+The draft's central gap is well chosen: native multi-table semantics plus several deployment shifts and uncertainty, rather than a benchmark on a preconstructed graph. Keep the claim about prior work qualified: RelBench/RDBench-style resources establish public multi-table tasks and standardized loaders, but do not by themselves establish that all prior work lacks every shift axis. Say that joint evaluation of raw-table extraction, heterophily, temporal/entity/relationship shifts, and calibration is not yet standardized.
+
+Literature anchors to cite where references are available:
+- Relational Deep Learning (RDL) and RelBench motivate learning directly over entities, relations, and temporal neighborhoods instead of only flattened features; relational aggregation and temporal leakage control are relevant baselines.
+- RDBench (the supplied introduction's benchmark) is the direct benchmark precedent; distinguish the proposed work as a robustness/calibration extension rather than claiming the first multi-table benchmark.
+- Graph heterophily baselines should include MLP/feature-only, vanilla GCN/GraphSAGE/GAT, and at least one heterophily-oriented model such as H2GCN, MixHop, FAGCN, GPR-GNN, or LINKX. Include a graph-free SQL+GBDT baseline because heterophily can make neighbor averaging worse than features.
+- For shift evaluation, use graph OOD/shift precedents (e.g., GOOD-style covariate/concept/structural shifts) as design inspiration, but explicitly define database-native shift generators and avoid equating random edge removal with a realistic temporal shift.
+- Calibration/OOD baselines should include temperature scaling or isotonic regression, deep ensembles, and a simple feature/representation-distance detector. Report selective risk at fixed coverage and calibration under each shift, not only IID ECE.
+
+Specific corrections/additions:
+1. Define heterophily operationally per relation and split: adjusted homophily or label informativeness, plus relation-specific neighbor-label agreement. A global homophily number is misleading in heterogeneous databases.
+2. Add relation-disjoint and entity-disjoint leakage checks that remove shared foreign-key paths crossing the split; otherwise multi-hop propagation can leak test entities.
+3. Separate inductive (future/new entities, no test rows in training graph) from transductive (test entities known, labels hidden), and report both with the same time cutoff.
+4. For uncertainty, distinguish calibration (NLL/Brier/adaptive ECE/reliability) from OOD detection (AUROC/AUPR/FPR95) and decision quality (risk-coverage/AURC). Add calibration error confidence intervals or bootstrap intervals under class imbalance.
+5. Add ablations for (i) typed versus shared aggregation, (ii) signed/anti-homophilous or relation-gated aggregation, (iii) temporal cutoff/decay, (iv) paths, and (v) ensemble size. Make the expected result explicitly conditional: typed/gated aggregation is hypothesized to help heterophilous relations, not guaranteed to beat specialized heterophily models.
+6. Dataset proposal should state a minimum suite (e.g., all public RelBench tasks plus the RDBench tasks that permit redistribution), versions, licenses, row counts, schema statistics, and a public split manifest. Structural shifts should be parameterized and include degree, relation-mixture, missingness, and label-informativeness shifts, with severity levels.
+
+Recommended central question: Can a schema-aware, uncertainty-calibrated relational learner improve accuracy and reliability over leakage-safe SQL/GBDT, tabular, and GNN baselines across native multi-table data under temporal, entity, relationship, and heterophily-induced shifts—and under which measurable database properties does each inductive bias win?
+
+The proposed results should be framed as an empirical map/diagnostic benchmark, not a guaranteed universal win: report paired per-task deltas, worst-shift performance, calibration degradation, selective risk, OOD detection, runtime/memory, and scaling.

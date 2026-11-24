@@ -1,0 +1,18 @@
+{
+  "benchmark": "marble",
+  "task_id": "research/3",
+  "harness": "codex",
+  "provider": "openai",
+  "model": "gpt-5.6-luna",
+  "planner_model": null,
+  "planner_mode": "fixed",
+  "protocol": "point_to_point",
+  "judge_provider": "openai",
+  "judge_model": "gpt-5.6-terra",
+  "seed": 7,
+  "max_turns": 40,
+  "max_team_tokens": null,
+  "max_agent_tokens": 500000,
+  "max_output_tokens": null,
+  "planner_chat_template_kwargs": {}
+}

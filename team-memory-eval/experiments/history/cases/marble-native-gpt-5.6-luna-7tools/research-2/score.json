@@ -1,0 +1,11 @@
+{
+  "task_id": "research/2",
+  "metrics": {
+    "innovation": 5,
+    "safety": 4,
+    "feasibility": 3
+  },
+  "status": "scored",
+  "ts": 4.0,
+  "ts_100": 80.0
+}

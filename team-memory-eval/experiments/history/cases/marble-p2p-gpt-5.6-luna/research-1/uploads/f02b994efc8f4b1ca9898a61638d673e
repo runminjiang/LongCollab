@@ -1,0 +1,26 @@
+Experimental plan for client-adaptive private representation distillation in personalized federated learning
+
+Datasets and partitions
+- CIFAR-10 (50,000 train/10,000 test), 100 clients, and CIFAR-100 (50,000/10,000), 100 clients. Use Dirichlet label skew with alpha in {0.1, 0.3, 1.0}; alpha=0.1 is severe heterogeneity. Independently impose quantity skew by sampling client sizes from a log-normal distribution (report min/median/max) while keeping the global training set fixed. Also use pathological two-label-per-client splits as a stress test.
+- FEMNIST (LEAF benchmark; writer-disjoint clients, approximately 3,400 clients) with 100 and 500-client subsets, preserving natural writer/quantity skew. Use fixed public train/validation/test splits and at least five random seeds.
+- For each client, hold out 20% of local examples for personalization validation/test; never use this holdout in aggregation. Evaluate both seen-client personalization and unseen-client adaptation where feasible.
+
+Baselines and protocol
+- Compare FedAvg, FedProx, Ditto, FedPer, FedRep, and pFedMe, plus the proposed method. Optionally include FedBABU or FedAMP if implementation resources permit. Tune each method on the same validation budget and report both a shared/global model and personalized client models where applicable.
+- Use a common backbone (small CNN for FEMNIST/CIFAR-10; ResNet-18 or a lightweight CNN for CIFAR-100), identical augmentations, optimizer family, local epochs, and total communication rounds. In each round sample 10% of clients (also test 1% and full participation), train 1-5 local epochs, and use a fixed per-client compute budget. Report total transmitted bytes, rounds to target accuracy, and wall-clock proxy (client updates plus server aggregation).
+- The proposed adaptive bound should be computed from privacy-preserving client summaries (e.g., clipped/noised validation loss, gradient norm, predictive entropy, and teacher-student disagreement), never raw examples. Evaluate both secure-aggregation-only and DP variants.
+
+Metrics
+- Mean personalized test accuracy and macro-F1; 10th-percentile/worst-client accuracy and worst-decile mean; standard deviation and 95% confidence intervals across clients/seeds.
+- Fairness gap = p90(client accuracy) - p10(client accuracy), plus equal-weight client utility versus example-weighted global utility. Record per-client calibration (ECE/Brier) and worst-decile calibration.
+- Robustness: accuracy under label noise (10/20%), feature corruption (CIFAR-C severities 1-5), client drift, and 20-50% random client dropout. Report retention relative to clean accuracy and adaptation after drift.
+- Privacy: user-level epsilon/delta under DP-SGD or clipped/noised summaries using an RDP accountant; utility versus epsilon curve. Also report leakage audits if available, but do not claim formal privacy without the accountant.
+- Convergence: rounds and communicated bytes to reach fixed mean and p10 accuracy targets; per-round variance and stability/failure rate.
+
+Ablations and controls
+- Heterogeneity: Dirichlet alpha sweep {0.05, 0.1, 0.3, 1.0, 10}, quantity-skew severity, natural FEMNIST versus synthetic partitions, participation 1/10/100%, and dropout. Personalization strength: adaptive bound versus fixed local-learning-rate/bound, and bound quantiles (p25/p50/p75) or clipping caps; sweep local/private-head update ratio and distillation temperature. Remove each uncertainty signal (entropy, disagreement, loss, gradient norm) one at a time.
+- Privacy/utility: no-DP, DP summaries at epsilon in {1, 3, 8}; vary clipping/noise and secure aggregation. Distillation controls: no distillation, global-teacher only, local-teacher only, and adaptive teacher mixture. Stability controls: with/without bound smoothing, momentum, and server-side clipping.
+- Statistical tests: paired seeds and client-level bootstrap confidence intervals; Wilcoxon/permutation tests for p10 accuracy and fairness gap. Include communication-normalized accuracy curves, not only final accuracy.
+
+Expected interpretation and risks
+The method should improve worst-client accuracy and fairness gap under severe label/quantity skew while retaining competitive mean accuracy and reducing adaptation instability. Gains must persist under dropout, corruption, and privacy noise. Potential failure cases include noisy uncertainty estimates for tiny clients, over-personalization causing catastrophic forgetting, and extra summary communication; mitigate with minimum sample thresholds, exponential moving averages, clipped bounds, fallback to global rates, and quantized summaries. A negative result (mean utility improves but p10 worsens, or privacy noise erases gains) should be reported as evidence about when adaptive personalization is unsuitable.

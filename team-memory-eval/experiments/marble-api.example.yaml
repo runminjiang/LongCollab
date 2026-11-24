@@ -1,0 +1,24 @@
+# 复制到 marble-api.local.yaml，在本地副本中填写下面三项。
+base_url: &service_url "https://your-endpoint.invalid/v1"
+model: &service_model "your-served-model"
+api_key: &service_key "your-api-key"
+
+benchmark: marble
+# 多题并发时，把下一行替换为 task_ids: [1, 2, 3]。
+task_id: research/1
+# 可选 deepseek、claude-code 或 codex。Codex 成员需要同一端点提供流式 Responses。
+harness: deepseek
+# 可选。显式设置团队成员的推理档位，省略时沿用原生默认值。
+# member_reasoning_effort: high
+provider: &service_protocol openai
+planner_mode: fixed
+protocol: point_to_point
+seed: 7
+max_turns: 40
+max_agent_tokens: 500000
+
+# YAML 引用让评委复用上面的端点、模型和 key；也可以分别填写。
+judge_provider: *service_protocol
+judge_base_url: *service_url
+judge_model: *service_model
+judge_api_key: *service_key

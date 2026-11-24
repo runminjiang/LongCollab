@@ -1,0 +1,3 @@
+# 归档答案、上传文件和官方汇总按原始字节校验。
+experiments/history/cases/** -text
+experiments/history/official/** -text

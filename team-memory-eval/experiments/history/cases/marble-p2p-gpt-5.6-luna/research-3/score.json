@@ -1,0 +1,9 @@
+{
+  "status": "scored",
+  "model": "gpt-5.6-terra",
+  "metrics": {
+    "innovation": 4,
+    "safety": 4,
+    "feasibility": 4
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "benchmark": "drbench",
+  "task_id": "DR0003",
+  "runner": "codex-native",
+  "model": "gpt-6-luna",
+  "effort": "high",
+  "prompt_sha256": "3e5ed319b2a0a2bac86b0649ae2914c6ebe3b0421e0e1b1795fb7fba49dbb1f2",
+  "image_id": "sha256:b3e812610d0f787318d52f962e922bda3dc36f7b8f564c6144cc429037642198",
+  "codex": "codex-cli 0.166.0"
+}

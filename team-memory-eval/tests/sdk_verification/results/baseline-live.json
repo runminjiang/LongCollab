@@ -1,0 +1,487 @@
+{
+  "date": "2026-11-24",
+  "timezone": "Asia/Shanghai",
+  "delivery_commit": "f11801df07f08eafe1848d75f0fc359d8e4aafdb",
+  "source_archive_sha256": "2ceac6f0e9d498b5a07bf202e97a4acd01ce16d05532b479f0e0b3b8ebe81b69",
+  "marble_commit": "eae9f15e5b9f1e808f8ff61800b129d5538c1b47",
+  "marble_tree": "57e40328c22b0b3cde33afa2d0a7509e8e9c5f40",
+  "marble_verified_blobs": 2910,
+  "drbench_commit": "0d699ecf6aa96b1de378595b432e9b16a82f0ed9",
+  "default_working_model": "gpt-6-luna",
+  "delivery_seven_tool_working_model": "gpt-5.6-luna",
+  "judge": "gpt-5.6-terra",
+  "runs": [
+    {
+      "entry": "delivery-seven-task1",
+      "task": "research/1",
+      "output_directory": "delivery-seven-task1/research-1",
+      "harness_overlay": null,
+      "runner_exit": -2,
+      "execution": "failed",
+      "scoring": "not_run",
+      "scoring_exit": 2,
+      "codex": "codex-cli 0.166.0",
+      "effort": "high",
+      "prompt_sha256": "260dc5ff64c3ec6890d96a284280bc4c45b756e237c9b7657393eadc083a58c3",
+      "prompt_matches_historical": true,
+      "model": "gpt-5.6-luna",
+      "image_id": "sha256:f3b79e6fc7f610d0e45b07b8178dde5d9c3a4adb9cee1a7d59507c78e8eaab39",
+      "source": "delivery_f11801d",
+      "root_thread_id": "01a20c77-de54-7081-b4a7-7dc94a6f9531",
+      "observed_direct_child_thread_ids": [
+        "01a20c78-2fc9-7530-a5ce-e553f3e551c8",
+        "01a20c78-2fdf-7cf1-8938-3a90a2db4d77",
+        "01a20c78-2fef-7f82-a437-be038bd0719f",
+        "01a20c78-3022-77a0-bfa1-39472d22e73b",
+        "01a20c78-3038-7e92-a4d6-346e9ef463c8"
+      ],
+      "historical_spawned_children": 5,
+      "historical_work_model": "gpt-5.6-luna",
+      "historical_image_id": "sha256:b3e812610d0f787318d52f962e922bda3dc36f7b8f564c6144cc429037642198",
+      "historical_roster_size_match": true,
+      "tool_list_matches_historical": true,
+      "tool_calls": {
+        "get_related_papers": {
+          "success": 6,
+          "failure": 4
+        },
+        "get_paper_by_keyword": {
+          "success": 9,
+          "failure": 1
+        },
+        "get_paper_by_title": {
+          "success": 1,
+          "failure": 0
+        }
+      },
+      "registered_tools": [
+        "get_related_papers",
+        "get_recent_papers",
+        "collect_publications_and_coauthors",
+        "get_paper_by_keyword",
+        "get_paper_by_arxiv_id",
+        "get_paper_by_title",
+        "fetch_webpage"
+      ],
+      "artifacts": [],
+      "stopped_by_request": true,
+      "total_child_sessions_at_checkpoint": 5,
+      "execution_error": "KeyboardInterrupt:",
+      "scoring_input_error": "[Errno 2] No such file or directory: answer.jsonl",
+      "checkpoint_passed": true
+    },
+    {
+      "entry": "delivery-seven-task2",
+      "task": "research/2",
+      "output_directory": "delivery-seven-task2/research-2",
+      "harness_overlay": null,
+      "runner_exit": -2,
+      "execution": "failed",
+      "scoring": "not_run",
+      "scoring_exit": 2,
+      "codex": "codex-cli 0.166.0",
+      "effort": "high",
+      "prompt_sha256": "10cb8fc6f0468e46e2c42fb10f9991c1188ecba90bf0cea30e4dcee74ceaefab",
+      "prompt_matches_historical": true,
+      "model": "gpt-5.6-luna",
+      "image_id": "sha256:f3b79e6fc7f610d0e45b07b8178dde5d9c3a4adb9cee1a7d59507c78e8eaab39",
+      "source": "delivery_f11801d",
+      "root_thread_id": "01a20c77-d422-7781-a96d-5e4486ac28a6",
+      "observed_direct_child_thread_ids": [
+        "01a20c78-2226-7f01-bcf9-d8f03edcccd3",
+        "01a20c78-223d-7b12-b27f-5bdc0895b5a0",
+        "01a20c78-224e-74e1-b71c-efd9169bb92f",
+        "01a20c78-225d-7353-b549-e85603c71954",
+        "01a20c78-226a-70e1-a168-e4ba9b6b811e"
+      ],
+      "historical_spawned_children": 5,
+      "historical_work_model": "gpt-5.6-luna",
+      "historical_image_id": "sha256:b3e812610d0f787318d52f962e922bda3dc36f7b8f564c6144cc429037642198",
+      "historical_roster_size_match": true,
+      "tool_list_matches_historical": true,
+      "tool_calls": {
+        "get_related_papers": {
+          "success": 6,
+          "failure": 7
+        },
+        "get_paper_by_arxiv_id": {
+          "success": 1,
+          "failure": 2
+        }
+      },
+      "registered_tools": [
+        "get_related_papers",
+        "get_recent_papers",
+        "collect_publications_and_coauthors",
+        "get_paper_by_keyword",
+        "get_paper_by_arxiv_id",
+        "get_paper_by_title",
+        "fetch_webpage"
+      ],
+      "artifacts": [],
+      "stopped_by_request": true,
+      "total_child_sessions_at_checkpoint": 5,
+      "execution_error": "KeyboardInterrupt:",
+      "scoring_input_error": "[Errno 2] No such file or directory: answer.jsonl",
+      "checkpoint_passed": true
+    },
+    {
+      "entry": "delivery-seven-task3",
+      "task": "research/3",
+      "output_directory": "delivery-seven-task3/research-3",
+      "harness_overlay": null,
+      "runner_exit": -2,
+      "execution": "failed",
+      "scoring": "not_run",
+      "scoring_exit": 2,
+      "codex": "codex-cli 0.166.0",
+      "effort": "high",
+      "prompt_sha256": "b1bff536ac61d081563bb8d9d987a335041d9dc0f6dc5885d9a80af1a463a895",
+      "prompt_matches_historical": true,
+      "model": "gpt-5.6-luna",
+      "image_id": "sha256:f3b79e6fc7f610d0e45b07b8178dde5d9c3a4adb9cee1a7d59507c78e8eaab39",
+      "source": "delivery_f11801d",
+      "root_thread_id": "01a20c77-da27-7980-a94a-6930884e30ec",
+      "observed_direct_child_thread_ids": [
+        "01a20c78-58d9-7380-b863-fb36942ffcb6",
+        "01a20c78-79d2-7310-9f1d-8fcd68b3bd53",
+        "01a20c78-79dd-77c1-9117-6ea51e1b7222"
+      ],
+      "historical_spawned_children": 3,
+      "historical_work_model": "gpt-5.6-luna",
+      "historical_image_id": "sha256:b3e812610d0f787318d52f962e922bda3dc36f7b8f564c6144cc429037642198",
+      "historical_roster_size_match": true,
+      "tool_list_matches_historical": true,
+      "tool_calls": {
+        "get_paper_by_arxiv_id": {
+          "success": 2,
+          "failure": 0
+        },
+        "get_related_papers": {
+          "success": 6,
+          "failure": 0
+        },
+        "get_paper_by_keyword": {
+          "success": 6,
+          "failure": 0
+        },
+        "get_paper_by_title": {
+          "success": 3,
+          "failure": 5
+        },
+        "get_recent_papers": {
+          "success": 1,
+          "failure": 0
+        }
+      },
+      "registered_tools": [
+        "get_related_papers",
+        "get_recent_papers",
+        "collect_publications_and_coauthors",
+        "get_paper_by_keyword",
+        "get_paper_by_arxiv_id",
+        "get_paper_by_title",
+        "fetch_webpage"
+      ],
+      "artifacts": [],
+      "stopped_by_request": true,
+      "total_child_sessions_at_checkpoint": 3,
+      "execution_error": "KeyboardInterrupt:",
+      "scoring_input_error": "[Errno 2] No such file or directory: answer.jsonl",
+      "checkpoint_passed": true
+    },
+    {
+      "entry": "original-work",
+      "task": "DR0001",
+      "output_directory": "original-work/d7300a2559734706b862cbc3ec8dd2a3-DR0001",
+      "harness_overlay": null,
+      "runner_exit": 1,
+      "execution": "cancelled",
+      "execution_error": "运行收到停止请求",
+      "scoring": "not_run",
+      "app_tools_registered": [
+        "InternetSearchTool",
+        "EnhancedURLFetchTool",
+        "SmartAnalysisTool",
+        "EnterpriseAPITool"
+      ],
+      "model_requests": [
+        {
+          "category": "planner",
+          "http_status": 200,
+          "count": 1
+        },
+        {
+          "category": "worker",
+          "http_status": 200,
+          "count": 37
+        }
+      ],
+      "historical_config_difference_keys": [
+        "api_key_env",
+        "base_url",
+        "judge_api_key_env",
+        "judge_base_url"
+      ],
+      "resolved_endpoints_models_and_benchmark_match_historical": true,
+      "source": "pre_delivery_saved_workspace",
+      "protocol": "point_to_point",
+      "planner_mode": "generated",
+      "roster_size": 3,
+      "accepted_turns": 1,
+      "submissions_recorded": 1,
+      "tool_calls": {
+        "InternetSearchTool": {
+          "success": 9,
+          "failure": 0
+        },
+        "EnhancedURLFetchTool": {
+          "success": 2,
+          "failure": 0
+        },
+        "SmartAnalysisTool": {
+          "success": 3,
+          "failure": 0
+        }
+      },
+      "artifacts": [
+        {
+          "path": "original-work/d7300a2559734706b862cbc3ec8dd2a3-DR0001/result.json",
+          "bytes": 3059,
+          "sha256": "555d7e565cfd61e3f86ac5411e90b2a19ae8d52637882e3400cd118445e3dc66"
+        },
+        {
+          "path": "original-work/d7300a2559734706b862cbc3ec8dd2a3-DR0001/scores.json",
+          "bytes": 26,
+          "sha256": "28a37983ea005197a7febb7b94e3f435ad8449a7a61f35c8575b83ad3fcb13f3"
+        }
+      ],
+      "stopped_by_request": true,
+      "activated_before_stop": [
+        [
+          "REG001",
+          "planner_first"
+        ],
+        [
+          "OPS002",
+          "initial_assignment"
+        ]
+      ],
+      "committed_actions_before_stop": [
+        [
+          "ready",
+          "OPS002"
+        ]
+      ],
+      "historical_actor_prefix_match": null,
+      "single_active_turn_verified": true
+    },
+    {
+      "entry": "original-work",
+      "task": "DR0002",
+      "output_directory": "original-work/d7300a2559734706b862cbc3ec8dd2a3-DR0002",
+      "harness_overlay": null,
+      "runner_exit": 1,
+      "execution": "cancelled",
+      "execution_error": "运行收到停止请求",
+      "scoring": "not_run",
+      "app_tools_registered": [
+        "InternetSearchTool",
+        "EnhancedURLFetchTool",
+        "SmartAnalysisTool",
+        "EnterpriseAPITool"
+      ],
+      "model_requests": [
+        {
+          "category": "planner",
+          "http_status": 200,
+          "count": 1
+        },
+        {
+          "category": "worker",
+          "http_status": 200,
+          "count": 37
+        }
+      ],
+      "historical_config_difference_keys": [
+        "api_key_env",
+        "base_url",
+        "judge_api_key_env",
+        "judge_base_url"
+      ],
+      "resolved_endpoints_models_and_benchmark_match_historical": true,
+      "source": "pre_delivery_saved_workspace",
+      "protocol": "point_to_point",
+      "planner_mode": "generated",
+      "roster_size": 3,
+      "accepted_turns": 1,
+      "submissions_recorded": 0,
+      "tool_calls": {
+        "InternetSearchTool": {
+          "success": 9,
+          "failure": 0
+        },
+        "EnhancedURLFetchTool": {
+          "success": 1,
+          "failure": 0
+        },
+        "EnterpriseAPITool": {
+          "success": 2,
+          "failure": 0
+        },
+        "SmartAnalysisTool": {
+          "success": 1,
+          "failure": 0
+        }
+      },
+      "artifacts": [
+        {
+          "path": "original-work/d7300a2559734706b862cbc3ec8dd2a3-DR0002/result.json",
+          "bytes": 2907,
+          "sha256": "4c9aad4cd9b3c2acfd34ea4931bb3e3cc8db23a6da4fb895cb923e8943227ace"
+        },
+        {
+          "path": "original-work/d7300a2559734706b862cbc3ec8dd2a3-DR0002/scores.json",
+          "bytes": 26,
+          "sha256": "28a37983ea005197a7febb7b94e3f435ad8449a7a61f35c8575b83ad3fcb13f3"
+        }
+      ],
+      "stopped_by_request": true,
+      "activated_before_stop": [
+        [
+          "RET-01",
+          "planner_first"
+        ],
+        [
+          "RET-03",
+          "handoff"
+        ]
+      ],
+      "committed_actions_before_stop": [
+        [
+          "handoff",
+          "RET-03"
+        ]
+      ],
+      "historical_actor_prefix_match": null,
+      "single_active_turn_verified": true
+    },
+    {
+      "entry": "original-work",
+      "task": "DR0003",
+      "output_directory": "original-work/d7300a2559734706b862cbc3ec8dd2a3-DR0003",
+      "harness_overlay": null,
+      "runner_exit": 1,
+      "execution": "cancelled",
+      "execution_error": "运行收到停止请求",
+      "scoring": "not_run",
+      "app_tools_registered": [
+        "InternetSearchTool",
+        "EnhancedURLFetchTool",
+        "SmartAnalysisTool",
+        "EnterpriseAPITool"
+      ],
+      "model_requests": [
+        {
+          "category": "planner",
+          "http_status": 200,
+          "count": 1
+        },
+        {
+          "category": "worker",
+          "http_status": 200,
+          "count": 39
+        }
+      ],
+      "historical_config_difference_keys": [
+        "api_key_env",
+        "base_url",
+        "judge_api_key_env",
+        "judge_base_url"
+      ],
+      "resolved_endpoints_models_and_benchmark_match_historical": true,
+      "source": "pre_delivery_saved_workspace",
+      "protocol": "point_to_point",
+      "planner_mode": "generated",
+      "roster_size": 3,
+      "accepted_turns": 1,
+      "submissions_recorded": 0,
+      "tool_calls": {
+        "InternetSearchTool": {
+          "success": 14,
+          "failure": 0
+        },
+        "EnhancedURLFetchTool": {
+          "success": 5,
+          "failure": 0
+        },
+        "EnterpriseAPITool": {
+          "success": 1,
+          "failure": 0
+        }
+      },
+      "artifacts": [
+        {
+          "path": "original-work/d7300a2559734706b862cbc3ec8dd2a3-DR0003/result.json",
+          "bytes": 2691,
+          "sha256": "51829f6227cc39e9dc9cecd752b1c0325d366a4b61b6bbdc75836b42db28e00d"
+        },
+        {
+          "path": "original-work/d7300a2559734706b862cbc3ec8dd2a3-DR0003/scores.json",
+          "bytes": 26,
+          "sha256": "28a37983ea005197a7febb7b94e3f435ad8449a7a61f35c8575b83ad3fcb13f3"
+        }
+      ],
+      "stopped_by_request": true,
+      "activated_before_stop": [
+        [
+          "LOYALTY_RESEARCH",
+          "planner_first"
+        ],
+        [
+          "REPORT_LEAD",
+          "handoff"
+        ]
+      ],
+      "committed_actions_before_stop": [
+        [
+          "handoff",
+          "REPORT_LEAD"
+        ]
+      ],
+      "historical_actor_prefix_match": null,
+      "single_active_turn_verified": true
+    }
+  ],
+  "drbench_docker": {
+    "image": "ghcr.io/mmunozm/drbench-services@sha256:62355c66022a5208767f534152e27432722c9dd0a4154891355e6d2580b51bb5",
+    "local_image_id": "sha256:62355c66022a5208767f534152e27432722c9dd0a4154891355e6d2580b51bb5",
+    "containers": {
+      "tme-drbench-46362ee3": {
+        "entry": "original-work",
+        "start_log_image_confirmed": true,
+        "live_image_check": true
+      },
+      "tme-drbench-7a212d14": {
+        "entry": "original-work",
+        "start_log_image_confirmed": true,
+        "live_image_check": true
+      },
+      "tme-drbench-996dc631": {
+        "entry": "original-work",
+        "start_log_image_confirmed": true,
+        "live_image_check": true
+      }
+    }
+  },
+  "tme_execution_source": {
+    "format": "sha256 of compact sorted JSON of relative path to file SHA-256",
+    "sha256": "3a5c84423b3384a1f8abd6c3d1fb7ad3c2f025918f7998be1f47173b2cb5efda",
+    "files": 93,
+    "entry_sha256": "601d539188dcbcf6a9096747cb70081239d04cf54fc1eb450add37c78d50cd0f",
+    "planner_sha256": "1405460e4c738c0fc5914fb91e067e1f2acb8279da077ad018aadf02d863f818",
+    "p2p_sha256": "882704272073687f7c67ec35118679fb40ada2b084b909ebccb070319a4bddcb",
+    "team_sha256": "234d370a88baaffb3500c69d83bb7c3740ba3baa4c02d766f3e6a3501de8a786"
+  },
+  "checkpoint_time": "2026-11-24T15:39:23.691907+08:00"
+}

@@ -1,0 +1,478 @@
+"""以原生 Codex 团队运行研究题目，DRBench 与 TME 共用 App 工具和评分。"""
+
+import argparse
+import json
+import os
+import signal
+import socketserver
+import subprocess
+import sys
+import threading
+from datetime import UTC, datetime
+from functools import partial
+from http.server import BaseHTTPRequestHandler
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from types import SimpleNamespace
+from uuid import uuid4
+
+import httpx
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from scenarios import load  # noqa: E402
+from scenarios.marble import research_environment  # noqa: E402
+from service import archive  # noqa: E402
+from service.gateway import api_base, validate_responses_request  # noqa: E402
+from service.store import write_json  # noqa: E402
+
+IMAGE = "tme-codex:b1"
+OPENAI_ENDPOINT = "https://api.openai.com/v1"
+CHATGPT_ENDPOINT = "https://chatgpt.com/backend-api/codex"
+PIDS_LIMIT = 512
+TOKIO_WORKER_THREADS = 4
+
+
+class HostServer(socketserver.ThreadingMixIn, socketserver.UnixStreamServer):
+    daemon_threads = True
+
+
+def codex_image():
+    image_id = subprocess.check_output(
+        ["docker", "image", "inspect", "--format", "{{.Id}}", IMAGE], text=True, timeout=15
+    ).strip()
+    version = subprocess.check_output(
+        ["docker", "run", "--rm", "--pull=never", "--network", "none", "--read-only",
+         "--tmpfs", "/state", "-e", "HOME=/state",
+         "--name", "tme-codex-version-" + uuid4().hex, "--entrypoint", "/usr/local/bin/codex",
+         image_id, "--version"],
+        text=True, timeout=15,
+    ).strip()
+    return {"image_tag": IMAGE, "image_id": image_id, "codex": version}
+
+
+def chatgpt_headers(client_version):
+    auth_path = Path(os.environ.get("CODEX_HOME", Path.home() / ".codex")) / "auth.json"
+    try:
+        auth = json.loads(auth_path.read_text(encoding="utf-8"))
+        if auth["auth_mode"] != "chatgpt":
+            raise ValueError
+        token = auth["tokens"]["access_token"]
+        account = auth["tokens"]["account_id"]
+        if not all(
+            isinstance(value, str) and value and value.isascii()
+            and value.isprintable() and " " not in value
+            for value in (token, account)
+        ):
+            raise ValueError
+    except (OSError, TypeError, KeyError, ValueError):
+        raise ValueError("未读取到宿主 Codex 的文件版 ChatGPT 登录，请检查 codex login") from None
+    return {
+        "Authorization": f"Bearer {token}",
+        "ChatGPT-Account-Id": account,
+        "User-Agent": f"codex_cli_rs/{client_version}",
+        "originator": "codex_cli_rs",
+    }
+
+
+def research_catalog(task):
+    if task.benchmark == "drbench":
+        return [
+            {"name": name, "description": task.operation_descriptions[name], "inputSchema": {
+                "type": "object", "properties": {"query": {"type": "string"}},
+                "required": ["query"], "additionalProperties": False,
+            }}
+            for name in task.operations
+        ]
+    descriptions = research_environment({}).action_handler_descriptions
+    return [
+        {
+            "name": name,
+            "description": descriptions[name]["function"]["description"],
+            "inputSchema": descriptions[name]["function"]["parameters"],
+        }
+        for name in task.operations
+    ]
+
+
+def request_handler(task, catalog, endpoint, auth_headers, model, directory):
+    log_lock = threading.Lock()
+
+    class Handler(BaseHTTPRequestHandler):
+        def log_message(self, *_):
+            pass
+
+        def reply(self, status, value):
+            body = json.dumps(value, ensure_ascii=False).encode()
+            self.send_response(status)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+
+        def do_POST(self):
+            try:
+                length = int(self.headers.get("Content-Length", 0))
+                if not 0 < length <= 24 * 1024 * 1024:
+                    raise ValueError("请求长度无效")
+                body = json.loads(self.rfile.read(length))
+                if not isinstance(body, dict):
+                    raise ValueError("请求需要为 JSON 对象")
+                if self.path == "/catalog":
+                    self.reply(200, {"tools": catalog})
+                elif self.path == "/tool":
+                    self.tool(body)
+                elif self.path in {"/v1/responses", "/v1/responses/compact"}:
+                    validate_responses_request(body, model)
+                    self.forward(body)
+                else:
+                    self.reply(404, {"error": "路径未开放"})
+            except (ValueError, KeyError, TypeError, AttributeError) as error:
+                self.reply(400, {"error": str(error)})
+            except (BrokenPipeError, ConnectionResetError):
+                pass
+
+        def tool(self, body):
+            name = body["name"]
+            if name not in task.operations:
+                raise ValueError("工具未开放")
+            args = body.get("arguments", {})
+            if not isinstance(args, dict):
+                raise ValueError("工具参数需要为对象")
+            actor = "codex"
+            if task.benchmark == "drbench":
+                from uuid import UUID
+
+                actor = UUID(body["tool_session"]).hex
+            try:
+                _, operation = task.operations[name]
+                value = operation(actor, args)
+                failed = isinstance(value, dict) and value.get("success") is False
+            except Exception as error:
+                # 原版工具的外部服务异常作为本次工具结果返回。
+                value = {"success": False, "error-msg": f"{type(error).__name__}: {error}"}
+                failed = True
+            with log_lock, (directory / "tools.jsonl").open("a", encoding="utf-8") as log:
+                print(
+                    json.dumps(
+                        {"name": name, "arguments": args, "result": value, "actor": actor},
+                        ensure_ascii=False,
+                    ),
+                    file=log,
+                )
+            self.reply(
+                200,
+                {
+                    "content": [{"type": "text", "text": json.dumps(value, ensure_ascii=False)}],
+                    "isError": failed,
+                },
+            )
+
+        def forward(self, body):
+            try:
+                headers = auth_headers()
+            except ValueError as error:
+                self.reply(401, {"error": str(error)})
+                return
+            if self.path == "/v1/responses":
+                body["store"] = False
+            started = False
+            try:
+                with httpx.stream(
+                    "POST", endpoint + self.path.removeprefix("/v1"),
+                    headers=headers, json=body, timeout=180, follow_redirects=False,
+                ) as response:
+                    if response.status_code in {401, 403}:
+                        error = (
+                            "ChatGPT 拒绝宿主登录或模型请求，请检查 codex login 和此模型的访问权限"
+                            if endpoint == CHATGPT_ENDPOINT
+                            else "模型端点拒绝宿主凭据或模型请求"
+                        )
+                        self.reply(response.status_code, {"error": error})
+                        return
+                    self.send_response(response.status_code)
+                    self.send_header(
+                        "Content-Type", response.headers.get("Content-Type", "application/json")
+                    )
+                    self.end_headers()
+                    started = True
+                    for data in response.iter_bytes():
+                        self.wfile.write(data)
+            except httpx.HTTPError as error:
+                if not started:
+                    self.reply(502, {"error": f"模型连接失败：{type(error).__name__}"})
+                else:
+                    self.close_connection = True
+
+    return Handler
+
+
+def prompt_for(task):
+    if task.benchmark == "drbench":
+        return (
+            "Form a team for this business question. Choose at least two complementary roles "
+            "yourself, spawn native subagents, assign concrete work and evidence, wait for their "
+            "findings, and synthesize one English report. The persona is your audience. "
+            "Use the official DRBench App tools through the drbench MCP. Cite original sources. "
+            "Write the final JSON object to /work/report.json with report_text and report_insights "
+            "(each insight has a claim string and citations array of strings).\n\n"
+            + task.goal + "\n\n" + task.format + "\n\n" + task.resources["drbench_app"]
+        )
+    roles = "\n\n".join(role["id"] + "\n" + role["description"] for role in task.roles)
+    return (
+        "If native subagents are available, assign one to each researcher profile "
+        "and synthesize their findings. "
+        "Otherwise analyze the task from each profile's perspective. "
+        "Use the MARBLE MCP tools for literature search and access to research sources. "
+        "Submit one research proposal in English.\n\n"
+        f"Research task\n{task.goal}\n\nResearcher profiles\n{roles}\n\n"
+        f"Required output\n{task.format}\n"
+    )
+
+
+def native_team(directory, root_session_id):
+    """CLI 的主事件流可能省略派工，从真实子会话的父子关系恢复成员。"""
+    records = []
+    for path in sorted((directory / "native-sessions").rglob("rollout-*.jsonl")):
+        if path.is_symlink() or not path.is_file():
+            continue
+        with path.open(encoding="utf-8") as stream:
+            first = stream.readline()
+        if not first.strip():
+            continue
+        entry = json.loads(first)
+        if entry.get("type") != "session_meta":
+            continue
+        meta = entry["payload"]
+        source = meta.get("source")
+        subagent = source.get("subagent") if isinstance(source, dict) else None
+        spawn = subagent.get("thread_spawn") if isinstance(subagent, dict) else None
+        if spawn:
+            records.append({
+                "thread_id": meta["id"],
+                "parent_thread_id": spawn["parent_thread_id"],
+                "agent_path": spawn.get("agent_path"),
+            })
+    parents = {root_session_id}
+    team = []
+    while parents:
+        children = [m for m in records if m["parent_thread_id"] in parents]
+        team.extend(children)
+        parents = {m["thread_id"] for m in children}
+        records = [m for m in records if m not in children]
+    return team
+
+
+def run_task(task, directory, args, metadata, catalog, auth_headers):
+    directory.mkdir(exist_ok=task.benchmark == "drbench")
+    manifest = {**metadata, "task_id": task.id, "revision": task.revision, "status": "running"}
+    write_json(directory / "run.json", manifest)
+    (directory / "prompt.txt").write_text(prompt_for(task), encoding="utf-8")
+    worker = Path(__file__).with_name("codex_research_worker.py").resolve()
+    name = "tme-codex-research-" + uuid4().hex
+    uid, gid = os.getuid(), os.getgid()
+    with TemporaryDirectory(prefix="tme-codex-research-", dir="/tmp") as scratch:
+        socket_path = Path(scratch) / "host.sock"
+        handler = request_handler(task, catalog, args.endpoint, auth_headers, args.model, directory)
+        with HostServer(str(socket_path), handler) as server:
+            socket_path.chmod(0o600)
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            session_mount = []
+            if args.mode == "native" or task.benchmark == "drbench":
+                sessions = directory.resolve() / "native-sessions"
+                sessions.mkdir(mode=0o700)
+                session_mount = ["-v", f"{sessions}:/tme/native-sessions:rw"]
+            command = [
+                "docker", "run", "--rm", "--pull=never", "-i", "--name", name,
+                "--network", "none", "--read-only", "--cap-drop", "ALL",
+                "--security-opt", "no-new-privileges", "--pids-limit", str(PIDS_LIMIT),
+                "--user", f"{uid}:{gid}",
+                "--tmpfs", f"/tmp:rw,exec,nosuid,nodev,size=512m,uid={uid},gid={gid}",
+                "--tmpfs", f"/state:rw,nosuid,nodev,size=256m,uid={uid},gid={gid}",
+                "--tmpfs", f"/work:rw,nosuid,nodev,size=256m,uid={uid},gid={gid}",
+                "--workdir", "/work",
+                "-e", "HOME=/state", "-e", "CODEX_HOME=/state/codex",
+                "-e", f"TOKIO_WORKER_THREADS={TOKIO_WORKER_THREADS}",
+                "-e", "NO_PROXY=127.0.0.1,localhost", "-e", "PYTHONDONTWRITEBYTECODE=1",
+                "-v", f"{worker}:/opt/worker.py:ro",
+                "-v", f"{socket_path}:/tme/host.sock:ro",
+                *session_mount,
+                "--entrypoint", "python", metadata["image_id"], "/opt/worker.py",
+                args.model, args.effort, args.mode, task.benchmark,
+            ]
+            start = datetime.now(UTC)
+            try:
+                with (
+                    (directory / "prompt.txt").open("rb") as source,
+                    (directory / "events.jsonl").open("wb") as events,
+                    (directory / "stderr.log").open("wb") as errors,
+                ):
+                    process = subprocess.run(
+                        command, stdin=source, stdout=events, stderr=errors,
+                        timeout=args.timeout, check=False,
+                    )
+                manifest["exit_code"] = process.returncode
+                if process.returncode:
+                    raise RuntimeError(f"Codex 未完成交付，退出码 {process.returncode}")
+                with (directory / "events.jsonl").open(encoding="utf-8") as events:
+                    records = [json.loads(line) for line in events if line.strip()]
+                session_ids = [r["thread_id"] for r in records if r["type"] == "thread.started"]
+                if len(session_ids) != 1 or records[-1]["type"] != "research.delivered":
+                    raise RuntimeError("Codex 未记录唯一会话或最终交付")
+                manifest["session_id"] = session_ids[0]
+                answer = records[-1]["answer"]
+                if session_mount:
+                    team = native_team(directory, session_ids[0])
+                    manifest["native_team"] = team
+                    manifest["spawned_subagents"] = [m["thread_id"] for m in team]
+                if task.benchmark == "drbench":
+                    archive.validate(answer.encode(), task.outputs["report.json"])
+                    submissions = directory / "submissions"
+                    submissions.mkdir()
+                    (submissions / "report.json").write_text(answer, encoding="utf-8")
+                else:
+                    (directory / "idea").write_text(answer, encoding="utf-8")
+                    result = {"scenario": "research", "task_id": int(task.id.split("/")[1]), "answer": answer}
+                    (directory / "answer.jsonl").write_text(
+                        json.dumps(result, ensure_ascii=False) + "\n", encoding="utf-8"
+                    )
+                manifest["status"] = "completed"
+            except (
+                OSError, RuntimeError, ValueError, subprocess.TimeoutExpired, KeyboardInterrupt
+            ) as error:
+                manifest.update(status="failed", error=f"{type(error).__name__}: {error}")
+                subprocess.run(
+                    ["docker", "rm", "-f", name], stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL, timeout=15, check=False,
+                )
+                raise
+            finally:
+                server.shutdown()
+                thread.join()
+                manifest["elapsed_seconds"] = (datetime.now(UTC) - start).total_seconds()
+                write_json(directory / "run.json", manifest)
+    print(directory)
+
+
+def run_drbench_native(config, directory):
+    from contextlib import closing
+
+    from eval.score import score
+    from scenarios.drbench import app_tools
+    from service.gateway import Gateway, endpoint
+    from service.store import Store
+
+    directory = Path(directory).resolve()
+    directory.mkdir(parents=True, exist_ok=False)
+    old_handler = signal.signal(signal.SIGTERM, handle_terminate)
+    scores = {"status": "not_run"}
+    result = {"status": "failed"}
+    try:
+        task = load("drbench", config.task_id)
+        base, headers = endpoint(config.provider, config.base_url, config.api_key_env, api_key=config.api_key)
+        args = SimpleNamespace(endpoint=base, model=config.model, effort=config.member_reasoning_effort or "high",
+                               mode="native", timeout=None)
+        metadata = {"runner": "codex-native", "benchmark": "drbench", "mode": "native",
+                    **codex_image(),
+                    "model": args.model, "effort": args.effort, "role_source": "codex-native",
+                    "task_id": task.id, "status": "starting"}
+        write_json(directory / "run.json", metadata)
+        with app_tools(task, config, directory) as environment:
+            metadata["drbench_environment"] = environment
+            run_task(task, directory, args, metadata, research_catalog(task), lambda: headers)
+        result = {"status": "completed"}
+        with closing(Store(directory)) as store:
+            try:
+                metrics = score(task, {"report.json": (directory / "submissions/report.json").read_bytes()},
+                                config.judge_model, Gateway(config, store))
+                scores = {"status": "scored", "model": config.judge_model, "metrics": metrics}
+            except Exception as error:
+                scores = {"status": "evaluation_error", "model": config.judge_model, "error": str(error)}
+    except KeyboardInterrupt:
+        result = {"status": "cancelled", "error": "运行收到停止请求"}
+    except Exception as error:
+        result = {"status": "failed", "error": f"{type(error).__name__}: {error}"}
+    finally:
+        signal.signal(signal.SIGTERM, old_handler)
+        manifest_path = directory / "run.json"
+        manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {"task_id": config.task_id, "runner": "codex-native"}
+        write_json(manifest_path, {**manifest, **result})
+        write_json(directory / "result.json", result)
+        write_json(directory / "scores.json", scores)
+    print(json.dumps({"task_id": config.task_id, "directory": str(directory), **result, "scoring": scores["status"]},
+                     ensure_ascii=False), flush=True)
+    return int(scores["status"] != "scored")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--tasks", type=int, nargs="+", required=True, metavar="N",
+                        help="明确指定题号，例如 --tasks 1 3")
+    parser.add_argument("--model", required=True)
+    parser.add_argument("--effort", default="high")
+    parser.add_argument("--mode", choices=("native", "single"), default="native")
+    parser.add_argument("--auth", choices=("api-key", "chatgpt"), default="api-key",
+                        help="用 API key 或复用宿主的 Codex ChatGPT 登录")
+    parser.add_argument("--endpoint", help=f"Responses 端点，默认 {OPENAI_ENDPOINT}")
+    parser.add_argument("--api-key-env", help="API key 的环境变量名，默认 OPENAI_API_KEY")
+    parser.add_argument("--timeout", type=int, default=900)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    if any(n < 1 for n in args.tasks) or len(set(args.tasks)) != len(args.tasks):
+        parser.error("--tasks 需要互不重复的正整数")
+    if args.timeout < 1:
+        parser.error("--timeout 需要为正整数")
+    if args.auth == "chatgpt" and (args.endpoint is not None or args.api_key_env is not None):
+        parser.error("--auth chatgpt 仅使用官方 Codex 端点，不能指定 --endpoint 或 --api-key-env")
+
+    image = codex_image()
+
+    try:
+        if args.auth == "chatgpt":
+            args.endpoint = CHATGPT_ENDPOINT
+            auth_headers = partial(chatgpt_headers, image["codex"].removeprefix("codex-cli "))
+            auth_headers()
+        else:
+            args.endpoint = api_base(args.endpoint or OPENAI_ENDPOINT)
+            key_var = args.api_key_env or "OPENAI_API_KEY"
+            key = os.environ.get(key_var)
+            if not key and args.endpoint == OPENAI_ENDPOINT:
+                parser.error(f"宿主未设置 {key_var}")
+
+            def auth_headers():
+                return {"Authorization": f"Bearer {key}"} if key else {}
+
+    except ValueError as error:
+        parser.error(str(error))
+    os.environ.setdefault("LITELLM_LOCAL_MODEL_COST_MAP", "True")
+    try:
+        tasks = [load("marble", f"research/{n}") for n in args.tasks]
+    except ValueError as error:
+        parser.error(str(error))
+    catalog = research_catalog(tasks[0])
+    metadata = {
+        **image, "model": args.model, "effort": args.effort,
+        "mode": args.mode, "multi_agent_version": "v1" if args.mode == "native" else None,
+        "retrieval": "marble_research", "tools": list(tasks[0].operations),
+        "timeout_seconds": args.timeout, "model_auth": args.auth,
+        "container_pids_limit": PIDS_LIMIT, "tokio_worker_threads": TOKIO_WORKER_THREADS,
+    }
+    args.output.mkdir(parents=True, exist_ok=False)
+    failed = False
+    for n, task in zip(args.tasks, tasks):
+        try:
+            run_task(task, args.output / f"research-{n}", args, metadata, catalog, auth_headers)
+        except (OSError, ValueError, RuntimeError, subprocess.TimeoutExpired) as error:
+            print(f"{task.id} {type(error).__name__}: {error}", file=sys.stderr)
+            failed = True
+    return int(failed)
+
+
+def handle_terminate(*_):
+    raise KeyboardInterrupt
+
+
+if __name__ == "__main__":
+    signal.signal(signal.SIGTERM, handle_terminate)
+    raise SystemExit(main())

@@ -1,0 +1,16 @@
+batch,task,execution,scoring,innovation/safety/feasibility,score,original_score_file
+drbench-codex-native-gpt-6-luna,DR0001,completed,scored,,0.166667,experiments/runs/c02cccf986d445109e004df0ec79be5b-DR0001/scores.json
+drbench-codex-native-gpt-6-luna,DR0002,completed,scored,,0.285714,experiments/runs/c02cccf986d445109e004df0ec79be5b-DR0002/scores.json
+drbench-codex-native-gpt-6-luna,DR0003,completed,scored,,0.200000,experiments/runs/c02cccf986d445109e004df0ec79be5b-DR0003/scores.json
+drbench-p2p-gpt-6-luna,DR0001,completed,scored,,0.000000,experiments/runs/f3485343f9d9482db95d6946824efed8-DR0001/scores.json
+drbench-p2p-gpt-6-luna,DR0002,completed,scored,,0.142857,experiments/runs/f3485343f9d9482db95d6946824efed8-DR0002/scores.json
+drbench-p2p-gpt-6-luna,DR0003,completed,scored,,0.500000,experiments/runs/f3485343f9d9482db95d6946824efed8-DR0003/scores.json
+marble-native-gpt-5.6-luna-7tools,research/1,completed,scored,4/4/3,3.666667,experiments/codex-eval/luna-native-7tools-36UNkoIE/scores-gpt-5.6-terra.json
+marble-native-gpt-5.6-luna-7tools,research/2,completed,scored,5/4/3,4.000000,experiments/codex-eval/luna-native-7tools-36UNkoIE/scores-gpt-5.6-terra.json
+marble-native-gpt-5.6-luna-7tools,research/3,completed,scored,4/4/4,4.000000,experiments/codex-eval/luna-native-7tools-36UNkoIE/scores-gpt-5.6-terra.json
+marble-official-gpt-5.6-luna,research/1,completed,scored,4/4/3,3.666667,MARBLE/results/luna-research/research/openai_gpt-5.6-luna/results.jsonl
+marble-official-gpt-5.6-luna,research/2,completed,scored,5/5/4,4.666667,MARBLE/results/luna-research/research/openai_gpt-5.6-luna/results.jsonl
+marble-official-gpt-5.6-luna,research/3,completed,scored,4/4/3,3.666667,MARBLE/results/luna-research/research/openai_gpt-5.6-luna/results.jsonl
+marble-p2p-gpt-5.6-luna,research/1,completed,scored,4/4/3,3.666667,experiments/runs/eee3da542c064654b77d1877dac327ca-research-1/scores.json
+marble-p2p-gpt-5.6-luna,research/2,completed,scored,5/4/4,4.333333,experiments/runs/eee3da542c064654b77d1877dac327ca-research-2/scores.json
+marble-p2p-gpt-5.6-luna,research/3,completed,scored,4/4/4,4.000000,experiments/runs/eee3da542c064654b77d1877dac327ca-research-3/scores.json

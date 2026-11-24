@@ -1,0 +1,150 @@
+{
+  "task": "research/1",
+  "benchmark": "marble",
+  "execution": "completed",
+  "resources": {
+    "research": "Use python -m tools.client call get_paper_by_keyword '{\"keyword\":\"research term\",\"max_papers\":3}' for paper search. Other operations include get_recent_papers(domain,max_results), get_related_papers(query,num_results), get_paper_by_title(title), get_paper_by_arxiv_id(arxiv_id), collect_publications_and_coauthors(author). Use fetch_webpage(url) to read a public web page. The task introduction and output format are in the public goal. No enterprise files are mounted."
+  },
+  "planner_input_sha256": "5b755d089e0c407dd6abfef267ec6850d8f5b555d9ae1a86f02ea757f601e116",
+  "turns": [
+    {
+      "actor": "agent1",
+      "input_sha256": "9b2d87206d1059b38b323d61efbeb485a468bbd51a889f76eb13f4571b6a767c",
+      "session_id": "01a1f42a-0938-7e23-91d1-e5a5a736ec5a",
+      "action": {
+        "kind": "ready",
+        "submissions": {
+          "idea": "b3f9712f8883419f959dd1f91289eedc"
+        }
+      },
+      "uploads": [
+        {
+          "id": "b3f9712f8883419f959dd1f91289eedc",
+          "actor": "agent1",
+          "name": "idea.md",
+          "path": "uploads/b3f9712f8883419f959dd1f91289eedc"
+        }
+      ]
+    },
+    {
+      "actor": "agent2",
+      "input_sha256": "d465ba591cbab61dee5db3a108961e1076b8b7f4729541fb42cfa0eabb0ba01d",
+      "session_id": "01a1f42c-3143-7993-9694-a9dd83de8946",
+      "action": {
+        "kind": "handoff",
+        "to": "agent1",
+        "message": "Propose CAP-Distill (Client-Adaptive Private Representation Distillation): clients retain private heads while collaboratively training a shared backbone. Local loss combines supervision, global-teacher representation/logit distillation, and a proximal term. A bounded, DP-noised client shift/uncertainty score—based on entropy, calibration, and representation drift—controls each client’s personalization bound and learning rate: high-shift clients receive more head adaptation and smaller shared-backbone steps; stable clients receive stronger global transfer. Clip updates to adaptive bounds, add Gaussian noise, and use secure aggregation. Report client-level DP using RDP accounting with q, sigma, T, and delta.\n\nNovelty: existing FedProx/Moreau, Ditto, FedPer/FedRep, hypernetworks, and self-distillation methods generally do not jointly provide adaptive DP, fairness, robustness, and interpretable client adaptation; fixed-noise DP methods waste utility under heterogeneity. The method exposes an adaptation certificate via each client’s shift score, bound, and effective learning rate.\n\nChallenges: adaptive clipping can leak distribution information; noisy uncertainty estimates can misallocate personalization; teacher bias, DP noise, minority classes, dropout, and aggregation heterogeneity can hurt performance. Safeguards include bounded [Cmin,Cmax] parameters, EMA smoothing, DP/noised public bins, minimum participation, robust aggregation, and dropout sensitivity analysis.\n\nEvaluate CIFAR-10/100 and FEMNIST under Dirichlet label skew (alpha 0.1/0.5) and quantity skew with 50/100 clients and partial participation; optionally Shakespeare. Baselines: FedAvg, FedProx, pFedMe, Ditto, FedPer, FedRep, DP-FedAvg, and DP-pFedMe. Ablate distillation, fixed versus adaptive bounds, entropy versus drift scores, private versus nonprivate scores, head/backbone split, privacy noise, distillation weight, dropout, and noisy labels. Metrics: mean/median and worst-10% accuracy, macro-F1, 90th–10th percentile fairness gap, ECE, membership-inference leakage, epsilon/delta, communication bytes, convergence rounds, and robustness. Expected result: at matched epsilon, improved mean and worst-client accuracy, reduced fairness gap, and interpretable score-performance correlation. Search evidence: Wang et al., “Differential Privacy Personalized Federated Learning Based on Dynamically Sparsified Client Updates,” arXiv:2503.09192, reports adaptive norm/sparsification but leaves broader adaptive personalization and transparent fairness analysis open.",
+        "ready": true
+      },
+      "uploads": []
+    },
+    {
+      "actor": "agent1",
+      "input_sha256": "7a0dfacc481f7af71988c44e7b50daa84493d41de558235fddf902db6c75e746",
+      "session_id": "01a1f42a-0938-7e23-91d1-e5a5a736ec5a",
+      "action": {
+        "kind": "ready",
+        "submissions": {
+          "idea": "9bd05eb143644a6c9038ce491d89e4a1"
+        }
+      },
+      "uploads": [
+        {
+          "id": "9bd05eb143644a6c9038ce491d89e4a1",
+          "actor": "agent1",
+          "name": "idea.md",
+          "path": "uploads/9bd05eb143644a6c9038ce491d89e4a1"
+        }
+      ]
+    },
+    {
+      "actor": "agent4",
+      "input_sha256": "9ffdc896f7fce0fce88a222b31f9e6372c622537767a5d137cacb299de8891b1",
+      "session_id": "01a1f42e-f5b7-7833-a1b7-92adf8c81727",
+      "action": {
+        "kind": "handoff",
+        "to": "agent1",
+        "message": "Technical contribution: define private client shift and uncertainty scores locally, transmitting only clipped DP-noised scalars via secure aggregation. Set eta_i = eta_min + (eta_max-eta_min)sigmoid(a*s_i - b*u_i), with EMA smoothing and server-enforced bounds; high shift permits adaptation while high uncertainty suppresses unstable updates. Train with task loss plus proximal anchoring and global-backbone representation/logit distillation. Clip updates/statistics, use robust trimmed/median aggregation, trust-region checks, dropout fallback, and RDP accounting. Evaluate on CIFAR-10/100 with Dirichlet label/quantity skew and FEMNIST, comparing FedAvg, FedProx, Ditto, pFedMe, FedPer, and FedRep. Measure mean, worst-client and 10th-percentile accuracy, fairness gap, ECE, convergence, communication, privacy epsilon, and robustness. Ablate dynamic versus fixed bounds, shift/uncertainty signals, distillation, DP noise, robust aggregation, heterogeneity, and personalization strength. Risks include noisy small-client estimates, miscalibration, poisoned signals, dropout, overhead, and privacy–utility trade-offs. Prior methods generally personalize with fixed coefficients or architectures but do not jointly provide DP-protected adaptive strength, fairness, robustness, and interpretable adaptation traces.",
+        "ready": true
+      },
+      "uploads": []
+    },
+    {
+      "actor": "agent1",
+      "input_sha256": "25cbce4f765e87cd6dd595e372c85a786aa993d65e34060eb5e7226f2c7c4537",
+      "session_id": "01a1f42a-0938-7e23-91d1-e5a5a736ec5a",
+      "action": {
+        "kind": "ready",
+        "submissions": {
+          "idea": "bc3fe8b56b6341cfbac5f6a0f638cf21"
+        }
+      },
+      "uploads": [
+        {
+          "id": "bc3fe8b56b6341cfbac5f6a0f638cf21",
+          "actor": "agent1",
+          "name": "idea.md",
+          "path": "uploads/bc3fe8b56b6341cfbac5f6a0f638cf21"
+        }
+      ]
+    },
+    {
+      "actor": "agent3",
+      "input_sha256": "389ee9c31b0a56e89e3af30546488a8b5545a02d4ec19d7dce895eb4798f608f",
+      "session_id": "01a1f43a-4e69-7d93-bfe4-cb78be01c5de",
+      "action": {
+        "kind": "handoff",
+        "to": "agent1",
+        "message": "Uploaded experimental plan with datasets, partitions, baselines, metrics, ablations, and risks. Artifact ID: f02b994efc8f4b1ca9898a61638d673e. Key evaluation: CIFAR-10/100 Dirichlet and quantity skew, FEMNIST natural skew; FedAvg/FedProx/Ditto/FedPer/FedRep/pFedMe; mean and worst-client accuracy, fairness gap, communication, convergence, robustness, and DP utility curves; adaptive-bound and uncertainty-signal ablations.",
+        "files": [
+          "f02b994efc8f4b1ca9898a61638d673e"
+        ],
+        "ready": true
+      },
+      "uploads": [
+        {
+          "id": "f02b994efc8f4b1ca9898a61638d673e",
+          "actor": "agent3",
+          "name": "agent3_experimental_plan.txt",
+          "path": "uploads/f02b994efc8f4b1ca9898a61638d673e"
+        }
+      ]
+    },
+    {
+      "actor": "agent1",
+      "input_sha256": "f2fbdb292a5ce55b56bc45329ee3523c0cc3d90191dad7c174743cab0e1b33ca",
+      "session_id": "01a1f42a-0938-7e23-91d1-e5a5a736ec5a",
+      "action": {
+        "kind": "ready",
+        "submissions": {
+          "idea": "bc3fe8b56b6341cfbac5f6a0f638cf21"
+        }
+      },
+      "uploads": []
+    },
+    {
+      "actor": "agent5",
+      "input_sha256": "471e98666ad0e168f044ee33c21e2090c9e66c2780335a5e4066557c4d4a4eb9",
+      "session_id": "01a1f43f-6664-7f70-b207-35085ba83713",
+      "action": {
+        "kind": "handoff",
+        "to": "agent1",
+        "message": "Propose Private Adaptive Representation Distillation (PARD-FL): combine client-level differential privacy, uncertainty/support/disagreement-based adaptive personalization bounds, persistent private heads, and interpretable adaptation reports. Compare FedPer, FedRep, Ditto, pFedMe, and distillation baselines. Evaluate mean and worst-client accuracy, fairness gap, calibration, privacy leakage, robustness, convergence, and communication cost on CIFAR-10/100 and FEMNIST under label, quantity, and covariate skew. Existing methods do not jointly provide formal privacy, fairness, robust adaptation, and transparent client-level explanations. Key risks include DP noise, noisy estimates, teacher bias, client dropout, and overhead; mitigate with EMA estimates, bound clipping, minimum-support shrinkage, robust aggregation, and privacy accounting.",
+        "ready": true
+      },
+      "uploads": []
+    },
+    {
+      "actor": "agent1",
+      "input_sha256": "dadc464ad94c95d9b5c2b906f9da3e71e62bc1ff48ac625eceb85066bc443979",
+      "session_id": "01a1f42a-0938-7e23-91d1-e5a5a736ec5a",
+      "action": {
+        "kind": "ready",
+        "submissions": {
+          "idea": "bc3fe8b56b6341cfbac5f6a0f638cf21"
+        }
+      },
+      "uploads": []
+    }
+  ]
+}

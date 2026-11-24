@@ -1,0 +1,45 @@
+{
+  "members": [
+    {
+      "id": "agent1",
+      "role": "agent1",
+      "assignment": "Lead the literature review on personalized federated learning under Non-IID and unbalanced data, focusing on FedAvg, FedProx, Moreau-envelope methods, hypernetworks, partial initialization, and first-order personalization. Propose the central research question and an initial 5q outline emphasizing privacy, interpretability, and client adaptation. Consolidate all contributions into the final text, assemble the named final output \"idea\" in the required five-question format, upload it to the shared submission channel, and submit it. Use resource ID research for paper searches and citation verification.",
+      "resource_ids": [
+        "research"
+      ]
+    },
+    {
+      "id": "agent2",
+      "role": "agent2",
+      "assignment": "Analyze privacy-preserving personalization methods, including differential privacy, generative augmentation, self-distillation, and privacy-utility trade-offs. Develop a concrete method concept such as client-adaptive private representation distillation with a dynamic learning-rate bound, and provide candidate privacy accounting, ablations, and utility metrics that agent1 can incorporate into Questions 2, 3, and 5. Send the written contribution to agent1 before final assembly; do not upload or submit the final output. Use resource ID research.",
+      "resource_ids": [
+        "research"
+      ]
+    },
+    {
+      "id": "agent3",
+      "role": "agent3",
+      "assignment": "Design the experimental plan for the proposed personalized federated learning idea. Specify realistic datasets and partitions, including CIFAR-10/CIFAR-100 or FEMNIST under label and quantity skew, client counts, baselines such as FedAvg, FedProx, Ditto, FedPer, FedRep, and pFedMe, and metrics covering average accuracy, worst-client accuracy, fairness gap, communication cost, convergence, and robustness. Provide concrete ablations for heterogeneity and personalization strength to agent1; do not upload or submit the final output. Use resource ID research.",
+      "resource_ids": [
+        "research"
+      ]
+    },
+    {
+      "id": "agent4",
+      "role": "agent4",
+      "assignment": "Develop the technical formulation and evaluation risks for the proposed approach. Define how a dynamic client-specific learning-rate or personalization bound can be estimated from distribution shift and uncertainty without exposing raw data, explain aggregation and stability safeguards, and identify failure cases such as noisy estimates, client dropout, and communication overhead. Draft clear material for Questions 3 and 4 and send it to agent1; do not upload or submit the final output. Use resource ID research.",
+      "resource_ids": [
+        "research"
+      ]
+    },
+    {
+      "id": "agent5",
+      "role": "agent5",
+      "assignment": "Shape the novelty, interpretability, and expected-results narrative. Compare the proposed method against existing personalized federated learning and distillation approaches, explain why prior methods do not jointly provide privacy, fairness, robustness, and transparent client adaptation, and define expected outcomes plus reproducibility and explainability analyses. Send a concise synthesis to agent1 for Questions 2, 4, and 5; do not upload or submit the final output. Use resource ID research.",
+      "resource_ids": [
+        "research"
+      ]
+    }
+  ],
+  "first_member": "agent1"
+}

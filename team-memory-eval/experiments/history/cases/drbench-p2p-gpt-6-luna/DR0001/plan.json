@@ -1,0 +1,29 @@
+{
+  "members": [
+    {
+      "id": "M1",
+      "role": "Regulatory Research Lead",
+      "assignment": "Use drbench_app to research authoritative FDA sources on FSMA 204, including applicability to Lee's Market's products and activities, traceability lot code requirements, critical tracking events, key data elements, recordkeeping, exemptions, and current compliance timelines. Deliver a cited requirements matrix and flag questions requiring legal confirmation to the report lead.",
+      "resource_ids": [
+        "drbench_app"
+      ]
+    },
+    {
+      "id": "M2",
+      "role": "Food Supply Chain and Traceability Analyst",
+      "assignment": "Use drbench_app to investigate practical traceability workflows for produce, seafood, meat, bakery, prepared foods, online orders, and delivery. Identify operational gaps and feasible improvements across suppliers, receiving, stores, and distribution; provide a prioritized implementation checklist with cited evidence and measures for traceability readiness and customer trust.",
+      "resource_ids": [
+        "drbench_app"
+      ]
+    },
+    {
+      "id": "M3",
+      "role": "Regulatory Affairs Strategy and Report Lead",
+      "assignment": "Use drbench_app to gather Lee's Market-specific internal context and synthesize M1's requirements matrix and M2's operational checklist into recommendations tailored to Emily Patel, Regulatory Affairs Manager. Assemble the final report.json with report_text and report_insights, ensuring each claim has citations in the requested format; upload report.json and submit it as the named final output. Incorporate the other members' cited findings as concrete report contributions.",
+      "resource_ids": [
+        "drbench_app"
+      ]
+    }
+  ],
+  "first_member": "M1"
+}

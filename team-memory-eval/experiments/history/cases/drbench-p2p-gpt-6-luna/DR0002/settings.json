@@ -1,0 +1,20 @@
+{
+  "benchmark": "drbench",
+  "task_id": "DR0002",
+  "runner": "tme",
+  "harness": "codex",
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "planner_model": null,
+  "planner_mode": "generated",
+  "protocol": "point_to_point",
+  "judge_provider": "openai",
+  "judge_model": "gpt-5.6-terra",
+  "seed": 7,
+  "max_turns": 40,
+  "max_team_tokens": null,
+  "max_agent_tokens": 500000,
+  "max_output_tokens": null,
+  "member_reasoning_effort": "high",
+  "planner_chat_template_kwargs": {}
+}
